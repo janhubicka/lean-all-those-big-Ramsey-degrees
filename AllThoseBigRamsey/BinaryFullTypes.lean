@@ -94,16 +94,14 @@ theorem binary_ext {L : Language} (binary : ∀ R, L.arity R ≤ 2)
     · have noBase : ∀ d a, t d ≠ Sum.inl a := by
         intro d a h
         exact hb ⟨a, d, h⟩
-      let names : Fin (L.arity R) → Fin k := fun d =>
-        match hd : t d with
-        | .inl a => False.elim (noBase d a hd)
-        | .inr j => j
-      have hnames : (fun d => Sum.inr (names d)) = t := by
-        funext d
-        dsimp [names]
+      have existsName : ∀ d, ∃ u : Fin k, t d = Sum.inr u := by
+        intro d
         cases hd : t d with
         | inl a => exact False.elim (noBase d a hd)
-        | inr j => rfl
+        | inr u => exact ⟨u, rfl⟩
+      let names : Fin (L.arity R) → Fin k := fun d => Classical.choose (existsName d)
+      have hnames : (fun d => Sum.inr (names d)) = t :=
+        funext (fun d => (Classical.choose_spec (existsName d)).symm)
       have heq := congrArg (fun z : RelStructure L (Fin k) => z.rel R names) future
       change p.diagram.rel R (fun d => Sum.inr (names d)) =
         q.diagram.rel R (fun d => Sum.inr (names d)) at heq
@@ -111,16 +109,14 @@ theorem binary_ext {L : Language} (binary : ∀ R, L.arity R ≤ 2)
   · have noFuture : ∀ d j, t d ≠ Sum.inr j := by
       intro d j h
       exact ht ⟨j, d, h⟩
-    let names : Fin (L.arity R) → α := fun d =>
-      match hd : t d with
-      | .inl a => a
-      | .inr j => False.elim (noFuture d j hd)
-    have hnames : (fun d => Sum.inl (names d)) = t := by
-      funext d
-      dsimp [names]
+    have existsName : ∀ d, ∃ u : α, t d = Sum.inl u := by
+      intro d
       cases hd : t d with
-      | inl a => rfl
+      | inl a => exact ⟨a, rfl⟩
       | inr j => exact False.elim (noFuture d j hd)
+    let names : Fin (L.arity R) → α := fun d => Classical.choose (existsName d)
+    have hnames : (fun d => Sum.inl (names d)) = t :=
+      funext (fun d => (Classical.choose_spec (existsName d)).symm)
     have hp := p.over_base R names
     have hq := q.over_base R names
     rw [hnames] at hp hq

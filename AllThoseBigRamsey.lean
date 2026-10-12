@@ -8,3 +8,7 @@ import AllThoseBigRamsey.TriangleRepair
 import AllThoseBigRamsey.ThreeColourCertificates
 import AllThoseBigRamsey.DirectedTriangleRepair
 import AllThoseBigRamsey.DirectedTriangleCertificates
+import AllThoseBigRamsey.BinaryFullTypes
+import AllThoseBigRamsey.FullTypeMaps
+import AllThoseBigRamsey.TypeAmalgamation
+import AllThoseBigRamsey.IrreducibleCover
