@@ -29,3 +29,11 @@ import AllThoseBigRamsey
 #print axioms AllThoseBigRamsey.ThreeColourCertificates.relabellings_checked
 #print axioms AllThoseBigRamsey.ThreeColourCertificates.classification_checked
 #print axioms AllThoseBigRamsey.ThreeColourCertificates.classified_smallSAP
+#print axioms AllThoseBigRamsey.DirectedTriangleRepair.Problem.step_preserves_at
+#print axioms AllThoseBigRamsey.DirectedTriangleRepair.Problem.uniform_choice
+#print axioms AllThoseBigRamsey.DirectedTriangleCertificates.small_classification
+#print axioms AllThoseBigRamsey.DirectedTriangleCertificates.swap_last
+#print axioms AllThoseBigRamsey.DirectedTriangleCertificates.local_certificates
+#print axioms AllThoseBigRamsey.DirectedTriangleCertificates.anchored_certificate
+#print axioms AllThoseBigRamsey.DirectedTriangleCertificates.no_empty_rule
+#print axioms AllThoseBigRamsey.DirectedTriangleCertificates.poset_triangle_iff
