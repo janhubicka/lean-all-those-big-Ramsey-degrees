@@ -43,7 +43,7 @@ structure Enumeration (α : Type) where
 
 structure EnumeratedStructure (L : Language) where
   Carrier : Type
-  structure : RelStructure L Carrier
+  relStructure : RelStructure L Carrier
   enumeration : Enumeration Carrier
 
 namespace EnumeratedStructure
@@ -52,7 +52,7 @@ abbrev index (A : EnumeratedStructure L) := A.enumeration.index
 
 def ofFin {n : Nat} (A : RelStructure L (Fin n)) : EnumeratedStructure L where
   Carrier := Fin n
-  structure := A
+  relStructure := A
   enumeration := {
     index := Fin.val
     injective := Fin.ext
@@ -60,14 +60,14 @@ def ofFin {n : Nat} (A : RelStructure L (Fin n)) : EnumeratedStructure L where
 end EnumeratedStructure
 
 structure OrderedEmbedding {L : Language} (A B : EnumeratedStructure L)
-    extends Embedding A.structure B.structure where
+    extends Embedding A.relStructure B.relStructure where
   increasing : ∀ {x y}, A.index x < A.index y → B.index (toFun x) < B.index (toFun y)
 
 namespace OrderedEmbedding
 variable {L : Language} {A B C : EnumeratedStructure L}
 
 def id (A : EnumeratedStructure L) : OrderedEmbedding A A where
-  toEmbedding := Embedding.id A.structure
+  toEmbedding := Embedding.id A.relStructure
   increasing := fun h => h
 
 def comp (g : OrderedEmbedding B C) (f : OrderedEmbedding A B) : OrderedEmbedding A C where

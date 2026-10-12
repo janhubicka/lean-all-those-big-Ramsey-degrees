@@ -14,7 +14,7 @@ def TailTuple (A : EnumeratedStructure L) (v : A.Carrier)
 
 def SameType (A : EnumeratedStructure L) (v : A.Carrier)
     {k : Nat} (s t : Fin k → A.Carrier) : Prop :=
-  SameFullType A.structure (fun x : Prefix A v => x.val) s t
+  SameFullType A.relStructure (fun x : Prefix A v => x.val) s t
 
 /-- All tuple sizes at most `n` are included; no padding assumption is made. -/
 def NTypeRespecting {A B : EnumeratedStructure L} (n : Nat)
@@ -53,8 +53,15 @@ theorem mono {f : OrderedEmbedding A B} (hf : NTypeRespecting n f) (hmn : m ≤ 
   exact hf v k (Nat.le_trans hk hmn) s t hs ht hst
 end NTypeRespecting
 
-/-- The unqualified convention, for a specified maximum positive relation arity `r`. -/
-def TypeRespecting {A B : EnumeratedStructure L} (r : Nat)
-    (f : OrderedEmbedding A B) : Prop := NTypeRespecting (r - 1) f
+/-- A maximum positive arity, with value one for the empty language. -/
+structure MaximumArity (L : Language) where
+  value : Nat
+  positive : 0 < value
+  bound : ∀ R, L.arity R ≤ value
+  sharp : value = 1 ∨ ∃ R, L.arity R = value
+
+/-- The unqualified convention uses the actual maximum relation arity minus one. -/
+def TypeRespecting {A B : EnumeratedStructure L} (r : MaximumArity L)
+    (f : OrderedEmbedding A B) : Prop := NTypeRespecting (r.value - 1) f
 
 end AllThoseBigRamsey
