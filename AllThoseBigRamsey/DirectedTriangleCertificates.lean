@@ -12,6 +12,8 @@ All closed checks use kernel `decide`; no solver output is trusted.
 -/
 namespace AllThoseBigRamsey.DirectedTriangleCertificates
 
+set_option maxSynthPendingDepth 1000
+
 abbrev Colour := Fin 3
 
 def reverse (a : Colour) : Colour :=
@@ -27,6 +29,10 @@ def orbit (a b c : Colour) : Nat :=
 
 def Triangle (palette : Fin 128) (a b c : Colour) : Prop :=
   palette.val.testBit (orbit a b c) = true
+
+instance (palette : Fin 128) (a b c : Colour) : Decidable (Triangle palette a b c) := by
+  unfold Triangle
+  infer_instance
 
 def SmallSAP (palette : Fin 128) : Prop :=
   (∀ a b : Colour, ∃ t : Colour, Triangle palette a t b) ∧
@@ -128,7 +134,9 @@ theorem anchored_laws : DirectedTriangleRepair.AnchoredLaws ExceptionalTriangle 
 
 /-- An incomparable pair cannot share any prescribed profile at a new base point.
 Thus the exceptional class has no admissible empty-to-nonempty type map. -/
-theorem no_empty_rule : ∀ h : Colour, ¬ ExceptionalTriangle h 2 h := by decide
+theorem no_empty_rule : ∀ h : Colour, ¬ ExceptionalTriangle h 2 h := by
+  unfold ExceptionalTriangle Triangle
+  decide
 
 /-- The strict relation encoded by the three oriented pair labels. -/
 def relation (a b c : Colour) (i j : Fin 3) : Prop :=
@@ -136,6 +144,8 @@ def relation (a b c : Colour) (i j : Fin 3) : Prop :=
   (i = 1 ∧ j = 2 ∧ b = 0) ∨ (i = 2 ∧ j = 1 ∧ b = 1) ∨
   (i = 0 ∧ j = 2 ∧ c = 0) ∨ (i = 2 ∧ j = 0 ∧ c = 1)
 
+set_option maxRecDepth 100000 in
+set_option maxHeartbeats 0 in
 theorem poset_triangle_iff : ∀ a b c : Colour,
     Triangle ⟨121, by decide⟩ a b c ↔
     ∀ i j k : Fin 3, relation a b c i j → relation a b c j k → relation a b c i k := by
