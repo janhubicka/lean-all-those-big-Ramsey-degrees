@@ -36,10 +36,15 @@ proof dependencies. No custom axiom or proof placeholder is used.
 Kernel checking proves the written Lean statements; it does not by itself
 establish correspondence with every manuscript formulation.
 
-The new metric interpolation module is submitted for CI. It proves an arithmetic
-implication with explicit premises, not the metric type-amalgamation theorem.
-The manuscript supplies the written proofs that geometric type bounds satisfy
-these premises. Instantiating them in Lean is still required.
+The metric interpolation module at commit
+`36c600fa1cedca9d00cc5b68a4932ddada42c080` passed the build and dependency
+checks in Actions run `38279289894`, job `114912340613`, on Lean `v4.35.0-rc3`.
+The CI checkout was the test merge `251addfb9be48c0031bbf5fc359732f6ee5779cb`.
+Only the standard Lean axioms occur; no `sorryAx` was reported.
+This proves an arithmetic implication with explicit premises, not the metric
+type-amalgamation theorem. The manuscript supplies the written proofs that
+geometric type bounds satisfy these premises. Instantiating them in Lean is
+still required.
 
 ## Remaining interfaces and proofs
 
