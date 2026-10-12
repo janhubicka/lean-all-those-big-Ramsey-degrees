@@ -66,6 +66,8 @@ def step (b : B) (h : Q → C) : Q → C :=
   fun x => r D.root (D.rootBase b) (D.newBase b)
     (D.profileRoot x) (D.profile x b) (h x)
 
+include laws
+
 theorem step_root (b : B) (h : Q → C) (hr : D.Root h) :
     D.Root (D.step r b h) := by
   intro x
@@ -106,9 +108,10 @@ theorem step_preserves_at (b c : B) (h : Q → C)
     rw [D.involution] at out
     exact out
 
-def run : List B → (Q → C) → Q → C
+def run (D : Problem C B Q) (r : C → C → C → C → C → C → C) :
+    List B → (Q → C) → Q → C
   | [], h => h
-  | b :: bs, h => D.run r bs (D.step r b h)
+  | b :: bs, h => run D r bs (D.step r b h)
 
 theorem run_root (bs : List B) (h : Q → C) (hr : D.Root h) :
     D.Root (D.run r bs h) := by
