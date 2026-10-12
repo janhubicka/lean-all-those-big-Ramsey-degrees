@@ -1,4 +1,4 @@
-name = "all-those-big-ramsey"
+name = "all_those_big_ramsey"
 version = "0.1.0"
 defaultTargets = ["AllThoseBigRamsey"]
 
