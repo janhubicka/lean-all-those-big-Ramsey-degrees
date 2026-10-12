@@ -3,16 +3,14 @@ import AllThoseBigRamsey.DirectedTriangleRepair
 /-!
 # Certificates for all triangle classes of oriented graphs
 
-Pair labels: 0 is forward, 1 backward, 2 absent. Triangle coordinates are
-(01,12,02). The seven orbits, in bit order, are transitive tournament,
-cyclic tournament, directed path, in-star, out-star, single arc, empty.
-All 128 palettes are tested. Sixteen pass the genuine small-amalgamation
-condition, fifteen have local repairs, and palette 37 has anchored repairs.
-All closed checks use kernel `decide`; no solver output is trusted.
+Labels: 0 forward, 1 backward, 2 absent. Triangle coordinates are (01,12,02).
+The seven bits mean transitive tournament, cyclic tournament, directed path,
+in-star, out-star, single arc, empty. Kernel `decide` checks every finite claim.
+In SmallSAP the premises precede the later quantifiers, so reduction skips
+invalid bases and profiles instead of enumerating irrelevant continuations.
 -/
 namespace AllThoseBigRamsey.DirectedTriangleCertificates
 
--- Nested finite implications exceed the default instance-result size 128.
 set_option synthInstance.maxSize 100000
 
 abbrev Colour := Fin 3
@@ -37,12 +35,13 @@ instance (palette : Fin 128) (a b c : Colour) : Decidable (Triangle palette a b 
 
 def SmallSAP (palette : Fin 128) : Prop :=
   (∀ a b : Colour, ∃ t : Colour, Triangle palette a t b) ∧
-  (∀ edge p₀ p₁ q₀ q₁ : Colour,
-    Triangle palette edge p₁ p₀ → Triangle palette edge q₁ q₀ →
+  (∀ edge p₀ p₁ : Colour, Triangle palette edge p₁ p₀ →
+    ∀ q₀ q₁ : Colour, Triangle palette edge q₁ q₀ →
     ∃ t : Colour, Triangle palette p₀ t q₀ ∧ Triangle palette p₁ t q₁) ∧
-  (∀ ab ac bc p₀ p₁ p₂ q₀ q₁ q₂ : Colour,
-    Triangle palette ab bc ac →
+  (∀ ab ac bc : Colour, Triangle palette ab bc ac →
+    ∀ p₀ p₁ p₂ : Colour,
     Triangle palette ab p₁ p₀ → Triangle palette ac p₂ p₀ → Triangle palette bc p₂ p₁ →
+    ∀ q₀ q₁ q₂ : Colour,
     Triangle palette ab q₁ q₀ → Triangle palette ac q₂ q₀ → Triangle palette bc q₂ q₁ →
     ∃ t : Colour, Triangle palette p₀ t q₀ ∧ Triangle palette p₁ t q₁ ∧
       Triangle palette p₂ t q₂)
@@ -133,8 +132,7 @@ theorem anchored_certificate : AnchoredChecks := by
 theorem anchored_laws : DirectedTriangleRepair.AnchoredLaws ExceptionalTriangle anchoredRepair :=
   ⟨anchored_certificate.1, anchored_certificate.2.1, anchored_certificate.2.2⟩
 
-/-- An incomparable pair cannot share any prescribed profile at a new base point.
-Thus the exceptional class has no admissible empty-to-nonempty type map. -/
+/-- No empty-to-nonempty class-type-respecting map exists for palette 37. -/
 theorem no_empty_rule : ∀ h : Colour, ¬ ExceptionalTriangle h 2 h := by
   unfold ExceptionalTriangle Triangle
   decide
