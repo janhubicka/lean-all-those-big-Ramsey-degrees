@@ -11,6 +11,7 @@ library with no mathlib dependency. Run `lake build`, then `lake env lean Checks
 | `Relational` | `Language`, `RelStructure`, `Embedding`, `Enumeration`, `EnumeratedStructure`, `OrderedEmbedding`, `BigRamseyBound`, `IsBigRamseyDegree`, `HasFiniteBigRamseyDegrees` |
 | `FullTypes` | `FullType`, `typeOf`, `SameFullType`, `evaluate_reindex`, `evaluate_rebase`, restriction to coordinates and parameters |
 | `TypeRespecting` | `Prefix`, `TailTuple`, `SameType`, `NTypeRespecting`, `MaximumArity`, `TypeRespecting`; identities, composition and downward monotonicity |
+| `MetricInterpolation` | `clip`, `clip_bounds`, `clip_fixed`, `clip_pos`, `clip_lipschitz`, `clip_sum_lower`, `interpolation`: natural-number scalar core of the metric extension formula |
 
 Full types mean **full quantifier-free types**, including all internal relations,
 unary information and repeated relation entries. Big Ramsey degrees count
@@ -28,21 +29,29 @@ more general statement about pulled-back relational diagrams.
 
 ## Validation status
 
-Commit `b44a67b98744590825680904a5d8d53140dd7ffb` passed the complete build and
-proof-dependency checks on Lean `v4.35.0-rc3` in GitHub Actions run `38271277558`.
+Foundational commit `b44a67b98744590825680904a5d8d53140dd7ffb` passed the complete
+build and proof-dependency checks on Lean `v4.35.0-rc3` in Actions run `38271277558`.
 CI rejects unchecked declarations in the library, and `Checks.lean` reports
-proof dependencies for the restriction and embedding-closure lemmas.
-No `sorry` or custom axiom is used. Kernel checking proves the written Lean
-statements; it does not by itself establish correspondence with every manuscript
-formulation or prove the remaining mathematical results.
+proof dependencies. No custom axiom or proof placeholder is used.
+Kernel checking proves the written Lean statements; it does not by itself
+establish correspondence with every manuscript formulation.
+
+The new metric interpolation module is submitted for CI. It proves an arithmetic
+implication with explicit premises, not the metric type-amalgamation theorem.
+The manuscript supplies the written proofs that geometric type bounds satisfy
+these premises. Instantiating them in Lean is still required.
 
 ## Remaining interfaces and proofs
 
 Finite coherent full-type maps, their uniform continuation property and the
 manuscript's `n`-type-respecting amalgamation property are not yet encoded.
 The exact-split equivalence and maximum-arity reduction have written manuscript
-proofs but are not yet Lean proved. No general upper-bound Ramsey theorem or
-unrestricted implication between alternative amalgamation properties is assumed.
+proofs but are not yet Lean proved. For metric amalgamation, next encode valid
+one-point types, the lower and upper bounds for distances between two types,
+restriction to a subbase, and the class-relative interpretation of interpolation.
+The finite-distance-monoid version needs its own ordered-monoid scalar interface;
+the present module uses ordinary addition on natural numbers only.
 
-Internal manuscript comparison material is deliberately absent from this public
-repository. See the companion manuscript README for its internal source index.
+No general upper-bound Ramsey theorem or unrestricted cycles-and-cliques
+amalgamation theorem is assumed. Internal manuscript comparison material remains
+absent from this public repository.
