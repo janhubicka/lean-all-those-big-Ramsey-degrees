@@ -21,3 +21,7 @@ jobs:
           if grep -R -nE '(^|[[:space:]])(sorry|admit|axiom)[[:space:]]' AllThoseBigRamsey; then
             exit 1
           fi
+      - name: Report proof dependencies
+        run: |
+          lake env lean Checks.lean | tee axiom-report.txt
+          if grep -q 'sorryAx' axiom-report.txt; then exit 1; fi
