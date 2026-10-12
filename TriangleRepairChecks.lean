@@ -1,0 +1,6 @@
+import AllThoseBigRamsey.TriangleRepair
+#print axioms AllThoseBigRamsey.TriangleRepair.run_fixed
+#print axioms AllThoseBigRamsey.TriangleRepair.run_pairs
+#print axioms AllThoseBigRamsey.TriangleRepair.step_anchor
+#print axioms AllThoseBigRamsey.TriangleRepair.run_covers
+#print axioms AllThoseBigRamsey.TriangleRepair.uniform_choice
