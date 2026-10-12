@@ -33,10 +33,12 @@ def Listed (palette : Fin 16) : Prop :=
 set_option maxRecDepth 100000 in
 set_option maxHeartbeats 2000000 in
 theorem classification : ∀ palette : Fin 16, SmallSAP palette ↔ Listed palette := by
+  unfold SmallSAP Triangle Listed
   decide
 
 /-- Allowing just one-red and two-red triangles fails even small strong AP. -/
 theorem mixed_only_fails : ¬ SmallSAP ⟨6, by decide⟩ := by
+  unfold SmallSAP Triangle
   decide
 
 end AllThoseBigRamsey.TwoColourTriangles
