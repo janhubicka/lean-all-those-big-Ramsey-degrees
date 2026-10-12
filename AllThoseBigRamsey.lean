@@ -4,4 +4,6 @@ import AllThoseBigRamsey.TypeRespecting
 import AllThoseBigRamsey.MetricInterpolation
 import AllThoseBigRamsey.GroupLabelTypes
 import AllThoseBigRamsey.TwoColourTriangles
+import AllThoseBigRamsey.TriangleRepair
+import AllThoseBigRamsey.ThreeColourCertificates
 import AllThoseBigRamsey.LatticeInterpolation
