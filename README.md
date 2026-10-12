@@ -56,9 +56,17 @@ certificate theorem alone is not an end-to-end Lean proof of a class-level resul
 
 Foundations passed at b44a67b98744, metric scalar interpolation at 36c600fa1ced,
 group/two-colour interfaces at 424ea0ad09e6. Symmetric arbitrary-base repair and
-its certificates passed at 04b7a27d8003, Actions run 38299496216. The directed
-modules are submitted for CI; their status will be recorded after the actual run.
-`Checks.lean` reports dependencies. No custom axiom or proof placeholder is used.
+its certificates passed at 04b7a27d8003, Actions run 38299496216.
+
+Both directed modules and the complete library passed at
+`d99467e1771a5003592fd103cff863f4bed497c4`, Actions run `38306671021`, job
+`115002522912`, on Lean `v4.35.0-rc3`. The checked PR merge was
+`3a5164bc1a52413b29ce271147e5756a803afd88`. The consolidated `Checks.lean`
+report covers the arbitrary-base anchored theorem, exhaustive palette
+classification, local and anchored tables, empty-source obstruction and literal
+poset transitivity. Only standard Lean axioms occur; no `sorryAx` is reported.
+The finite certificate module compiled in 104 seconds. Earlier instance-size and
+evaluation-order failures were repaired without weakening any finite claim.
 
 Next formalize the exact full-type-map and class-relative continuation interfaces
 and connect the checked constraint constructions to them. Exact splits, the
