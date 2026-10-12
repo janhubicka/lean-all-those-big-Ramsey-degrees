@@ -24,10 +24,12 @@ def id (A : EnumeratedStructure L) (n : Nat) : FullTypeMap n A A where
   onType := fun _ _ p => p
   extension := by
     intro k hk p R t
+    change p.diagram.rel R t ↔ p.diagram.rel R
+      (fun i => Sum.map (fun x : A.Carrier => x) (fun j : Fin k => j) (t i))
     have h : (fun i => Sum.map (fun x : A.Carrier => x) (fun j : Fin k => j) (t i)) = t := by
       funext i
       cases t i <;> rfl
-    simpa only [h] using (Iff.rfl : p.diagram.rel R t ↔ p.diagram.rel R t)
+    rw [h]
   coherent := fun _ _ _ _ _ _ _ => rfl
 
 def comp (G : FullTypeMap n B C) (F : FullTypeMap n A B) : FullTypeMap n A C where
@@ -35,6 +37,8 @@ def comp (G : FullTypeMap n B C) (F : FullTypeMap n A B) : FullTypeMap n A C whe
   onType := fun k hk p => G.onType k hk (F.onType k hk p)
   extension := by
     intro k hk p R t
+    change p.diagram.rel R t ↔ (G.onType k hk (F.onType k hk p)).diagram.rel R
+      (fun i => Sum.map (fun x => G.base.toFun (F.base.toFun x)) (fun j => j) (t i))
     have hf := F.extension k hk p R t
     have hg := G.extension k hk (F.onType k hk p) R
       (fun i => Sum.map F.base.toFun (fun j => j) (t i))
@@ -77,8 +81,7 @@ theorem binary_determined_by_one (binary : ∀ R, L.arity R ≤ 2)
     F.onType k hk p = G.onType k hk p := by
   apply FullType.binary_ext binary
   · intro j
-    have hj : ∀ u v : Fin 1, u.val < v.val →
-        j.val < j.val := by
+    have hj : ∀ u v : Fin 1, u.val < v.val → j.val < j.val := by
       intro u v huv
       have hu := u.isLt
       have hv := v.isLt
