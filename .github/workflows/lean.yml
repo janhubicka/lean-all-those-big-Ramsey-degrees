@@ -1,0 +1,23 @@
+name: Lean
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: lean-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          use-mathlib-cache: false
+      - name: Reject unchecked declarations
+        run: |
+          if grep -R -nE '(^|[[:space:]])(sorry|admit|axiom)[[:space:]]' AllThoseBigRamsey; then
+            exit 1
+          fi

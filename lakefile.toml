@@ -1,0 +1,6 @@
+name = "all-those-big-ramsey"
+version = "0.1.0"
+defaultTargets = ["AllThoseBigRamsey"]
+
+[[lean_lib]]
+name = "AllThoseBigRamsey"
