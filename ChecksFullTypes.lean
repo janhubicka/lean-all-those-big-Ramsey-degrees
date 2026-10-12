@@ -1,0 +1,12 @@
+import AllThoseBigRamsey.BinaryFullTypes
+import AllThoseBigRamsey.FullTypeMaps
+import AllThoseBigRamsey.IrreducibleCover
+
+#print axioms AllThoseBigRamsey.FullType.binary_ext
+#print axioms AllThoseBigRamsey.FullTypeMap.id
+#print axioms AllThoseBigRamsey.FullTypeMap.comp
+#print axioms AllThoseBigRamsey.FullTypeMap.onType_injective
+#print axioms AllThoseBigRamsey.FullTypeMap.future_preserved
+#print axioms AllThoseBigRamsey.FullTypeMap.binary_determined_by_one
+#print axioms AllThoseBigRamsey.Irreducible.range_in_one_side
+#print axioms AllThoseBigRamsey.avoids_of_free_cover
