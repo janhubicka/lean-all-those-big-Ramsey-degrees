@@ -68,12 +68,14 @@ variable (edge : B → B → C)
 variable (base : ∀ b c, b ≠ c → T (s b) (edge b c) (s c))
 variable (profile : ∀ x b c, b ≠ c → T (q x b) (edge b c) (q x c))
 
-def AtAnchor (s : B → C) (q : Q → B → C) (h : Q → C) (c : B) : Prop :=
+def AtAnchor (T : C → C → C → Prop) (s : B → C) (q : Q → B → C) (h : Q → C) (c : B) : Prop :=
   ∀ x, T (h x) (s c) (q x c)
 
+include rotate edge base profile
+
 /-- Correcting b cannot undo a previously correct anchor c. -/
-theorem step_anchor (b c : B) (h : Q → C) (hc : AtAnchor s q h c) :
-    AtAnchor s q (step R s q b h) c := by
+theorem step_anchor (b c : B) (h : Q → C) (hc : AtAnchor T s q h c) :
+    AtAnchor T s q (step R s q b h) c := by
   classical
   intro x
   by_cases he : b = c
@@ -85,7 +87,7 @@ theorem step_anchor (b c : B) (h : Q → C) (hc : AtAnchor s q h c) :
     exact hp
 
 theorem run_anchor (bs : List B) (h : Q → C) (c : B)
-    (hc : AtAnchor s q h c) : AtAnchor s q (run R s q bs h) c := by
+    (hc : AtAnchor T s q h c) : AtAnchor T s q (run R s q bs h) c := by
   induction bs generalizing h with
   | nil => exact hc
   | cons b bs ih =>
@@ -94,7 +96,7 @@ theorem run_anchor (bs : List B) (h : Q → C) (c : B)
 
 /-- Every anchor occurring in the list is correct at the end. -/
 theorem run_covers (bs : List B) (h : Q → C) (c : B) (hc : c ∈ bs) :
-    AtAnchor s q (run R s q bs h) c := by
+    AtAnchor T s q (run R s q bs h) c := by
   induction bs generalizing h with
   | nil => cases hc
   | cons b bs ih =>
@@ -111,11 +113,11 @@ theorem uniform_choice (P : Q → Q → C → Prop)
     (pairsProfile : ∀ x y d, P x y d → ∀ b, T (q x b) (q y b) d)
     (bs : List B) (covers : ∀ b, b ∈ bs) (h : Q → C)
     (seed : ∀ x y d, P x y d → T (h x) (h y) d)
-    (protected : Q → Prop)
-    (protectedValid : ∀ x, protected x → ∀ b, T (s b) (q x b) (h x)) :
-    (∀ b, AtAnchor s q (run R s q bs h) b) ∧
+    (marked : Q → Prop)
+    (protectedValid : ∀ x, marked x → ∀ b, T (s b) (q x b) (h x)) :
+    (∀ b, AtAnchor T s q (run R s q bs h) b) ∧
     (∀ x y d, P x y d → T (run R s q bs h x) (run R s q bs h y) d) ∧
-    (∀ x, protected x → run R s q bs h x = h x) := by
+    (∀ x, marked x → run R s q bs h x = h x) := by
   refine ⟨?_, ?_, ?_⟩
   · intro b
     exact run_covers rotate R s q edge base profile bs h b (covers b)
