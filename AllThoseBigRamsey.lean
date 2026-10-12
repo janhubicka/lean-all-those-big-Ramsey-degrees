@@ -2,3 +2,5 @@ import AllThoseBigRamsey.Relational
 import AllThoseBigRamsey.FullTypes
 import AllThoseBigRamsey.TypeRespecting
 import AllThoseBigRamsey.MetricInterpolation
+import AllThoseBigRamsey.GroupLabelTypes
+import AllThoseBigRamsey.TwoColourTriangles
