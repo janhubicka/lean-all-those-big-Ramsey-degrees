@@ -19,3 +19,9 @@ import AllThoseBigRamsey
 #print axioms AllThoseBigRamsey.GroupLabelTypes.same_profile_pair
 #print axioms AllThoseBigRamsey.TwoColourTriangles.classification
 #print axioms AllThoseBigRamsey.TwoColourTriangles.mixed_only_fails
+#print axioms AllThoseBigRamsey.LatticeAdd.clip_bounds
+#print axioms AllThoseBigRamsey.LatticeAdd.clip_fixed
+#print axioms AllThoseBigRamsey.LatticeAdd.clip_nonzero
+#print axioms AllThoseBigRamsey.LatticeAdd.clip_nonexpansive
+#print axioms AllThoseBigRamsey.LatticeAdd.clip_pair_bound
+#print axioms AllThoseBigRamsey.LatticeAdd.interpolation
