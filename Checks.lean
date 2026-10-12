@@ -19,3 +19,10 @@ import AllThoseBigRamsey
 #print axioms AllThoseBigRamsey.GroupLabelTypes.same_profile_pair
 #print axioms AllThoseBigRamsey.TwoColourTriangles.classification
 #print axioms AllThoseBigRamsey.TwoColourTriangles.mixed_only_fails
+#print axioms AllThoseBigRamsey.TriangleRepair.Problem.step_preserves_fits
+#print axioms AllThoseBigRamsey.TriangleRepair.Problem.extension
+#print axioms AllThoseBigRamsey.FiniteQuotient.covers_of_capacity
+#print axioms AllThoseBigRamsey.ThreeColourTriangles.certified_classification
+#print axioms AllThoseBigRamsey.ThreeColourTriangles.repair_or_exception
+#print axioms AllThoseBigRamsey.ThreeColourTriangles.exceptional_renaming
+#print axioms AllThoseBigRamsey.ThreeColourTriangles.exceptional_has_no_repair
