@@ -12,7 +12,8 @@ All closed checks use kernel `decide`; no solver output is trusted.
 -/
 namespace AllThoseBigRamsey.DirectedTriangleCertificates
 
-set_option maxSynthPendingDepth 1000
+-- Nested finite implications exceed the default instance-result size 128.
+set_option synthInstance.maxSize 100000
 
 abbrev Colour := Fin 3
 
