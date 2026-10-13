@@ -110,12 +110,14 @@ private theorem foldl_decode (decode : Output → Input) (h : S.Faithful decode)
   | cons a rest ih =>
     apply ih (S.step s a)
     have hv : decode (S.select s.1 s.2 a) = a := h _ _ _
-    simpa [step, List.map_append, hs, hv]
+    simp [step, List.map_append, hs, hv]
 
 theorem decode_complete (decode : Output → Input) (h : S.Faithful decode)
     (xs : List Input) : (S.complete xs).map decode = xs := by
   have hp := S.foldl_decode decode h ([], []) xs (by simp)
-  simpa [complete, state, S.state_input] using hp
+  calc
+    (S.complete xs).map decode = (S.state xs).1 := hp
+    _ = xs := S.state_input xs
 
 theorem map_prefix {α : Type w} {β : Type u} (f : α → β)
     {xs ys : List α} (h : Prefix xs ys) : Prefix (xs.map f) (ys.map f) := by
