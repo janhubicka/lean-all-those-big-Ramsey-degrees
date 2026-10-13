@@ -1,4 +1,5 @@
 import AllThoseBigRamsey.CompletionTransport
+import AllThoseBigRamsey.OneTypeCompletion
 
 #print axioms AllThoseBigRamsey.CompletionTransport.PrefixSystem.below_antisymm
 #print axioms AllThoseBigRamsey.CompletionTransport.PrefixSystem.below_trans
@@ -7,3 +8,7 @@ import AllThoseBigRamsey.CompletionTransport
 #print axioms AllThoseBigRamsey.CompletionTransport.CoherentCompletion.compatible_iff
 #print axioms AllThoseBigRamsey.CompletionTransport.no_common_socle_completion
 #print axioms AllThoseBigRamsey.CompletionTransport.antichain_not_order_reflected_in_chain
+#print axioms AllThoseBigRamsey.OneTypeCompletion.neutral_base
+#print axioms AllThoseBigRamsey.OneTypeCompletion.neutral_extends
+#print axioms AllThoseBigRamsey.OneTypeCompletion.complete_prescribed
+#print axioms AllThoseBigRamsey.OneTypeCompletion.complete_extends
