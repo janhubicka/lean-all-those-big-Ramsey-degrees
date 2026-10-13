@@ -164,6 +164,10 @@ def EquivalenceTriangle (ab ax bx : Bool) : Prop :=
   ((ab = true ∧ bx = true) → ax = true) ∧
   ((ax = true ∧ bx = true) → ab = true)
 
+instance (ab ax bx : Bool) : Decidable (EquivalenceTriangle ab ax bx) := by
+  unfold EquivalenceTriangle
+  infer_instance
+
 theorem same_type_completable : EquivalenceTriangle true true true := by decide
 
 theorem mixed_type_completable : EquivalenceTriangle false true false := by decide
