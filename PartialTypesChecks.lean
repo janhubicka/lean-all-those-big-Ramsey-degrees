@@ -29,3 +29,9 @@ import AllThoseBigRamsey.CanonicalSocle
 #print axioms AllThoseBigRamsey.SupportClosed.neutralise_unique
 #print axioms AllThoseBigRamsey.SupportClosed.neutralise_restrict
 #print axioms AllThoseBigRamsey.SupportClosed.neutralise_fixed
+
+import AllThoseBigRamsey.SuccessorFreeLevels
+#print axioms AllThoseBigRamsey.SuccessorFreeLevels.insert_spaced
+#print axioms AllThoseBigRamsey.SuccessorFreeLevels.old_mark_preserved
+#print axioms AllThoseBigRamsey.SuccessorFreeLevels.cut_profile_preserved
+#print axioms AllThoseBigRamsey.SuccessorFreeLevels.example_relabel_not_spaced
