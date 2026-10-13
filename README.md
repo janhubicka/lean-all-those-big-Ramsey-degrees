@@ -21,6 +21,7 @@ for mathematical scope. Lean/Std only. Run `lake build`, then
 | `CompletionTransport` | `PrefixSystem` tree-order laws; `CoherentCompletion.below_iff`, `compatible_iff`; `no_common_socle_completion`; `antichain_not_order_reflected_in_chain` |
 | `OneTypeCompletion` | actual full diagrams: `neutral`, `neutral_base`, `neutral_extends`, `complete`, `complete_prescribed`, `complete_extends` |
 | `CanonicalSocle` | ordered finite-solution choice; `Scheme.complete_append_prefix`, `preserves_compatibility`, `decode_complete`, `reflects_prefix_of_faithful`, `visible_independent` |
+| `SupportClosed` | `PairMarked`, `neutralise`, `Irreducible`, `lift_embedding`, `neutralise_omits_irreducible`, `neutralise_unique`, `neutralise_restrict` |
 
 Full types include internal relations, unary/diagonal information and repeated
 entries. The naming of parameters and future vertices is injective in the
@@ -109,6 +110,33 @@ the image-continuation recognition lemma, the finite no-age test and the
 class-level TRAP theorem remain written proofs. Outside binary free amalgamation,
 the prescribed domain still has to be the image of a known admissible F.
 The generic raw partial-diagram completion claim is not assumed.
+
+## Pairwise E-support and irreducible completion
+
+The full-type manuscript repairs the adapted partial-type definition in
+arity >= 3: a determined atom must have **pairwise E-marked support**,
+not only lower vertices below the free level of its maximum. Positive
+tuples containing type vertices obey the same requirement on ordinary
+base pairs. Otherwise a ternary relation can span two ordinary vertices
+whose pair is not marked, and deleting undetermined binary relations can
+create an induced irreducible forbidden structure.
+
+`SupportClosed` proves the corresponding arbitrary-arity fact for
+concrete `RelStructure` objects: if an irreducible forbidden F embeds
+into the structure obtained by deleting positive tuples outside E-cliques,
+that same map embeds F into the original structure. All negative and
+repeated-coordinate atomic information is treated by induced embeddings.
+The module also proves neutralisation uniqueness when supported diagrams
+agree, and commutation with restrictions under injective maps.
+
+The intended application is canonical nodewise completion of individually
+completable E-supported partial types in free amalgamation classes,
+preserving socle compatibility and prefixes. This *does not* prove
+a class-type-respecting continuation map for non-neutral prescriptions,
+faithful recovery of E marks, or the general non-free TRAP transfer.
+The corresponding manuscript theorem is a written proof; Lean checks
+the central irreducibility argument and diagram operations, not the
+complete partial-type syntax.
 
 ## Canonical socle recursion
 
