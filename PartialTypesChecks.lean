@@ -1,3 +1,4 @@
+import AllThoseBigRamsey.SupportClosed
 import AllThoseBigRamsey.CompletionTransport
 import AllThoseBigRamsey.OneTypeCompletion
 import AllThoseBigRamsey.CanonicalSocle
@@ -20,3 +21,11 @@ import AllThoseBigRamsey.CanonicalSocle
 #print axioms AllThoseBigRamsey.CanonicalSocle.Scheme.decode_complete
 #print axioms AllThoseBigRamsey.CanonicalSocle.Scheme.reflects_prefix_of_faithful
 #print axioms AllThoseBigRamsey.CanonicalSocle.visible_independent
+
+#print axioms AllThoseBigRamsey.SupportClosed.neutralise_rel_iff_of_marked
+#print axioms AllThoseBigRamsey.SupportClosed.pair_marked_of_irreducible_embedding
+#print axioms AllThoseBigRamsey.SupportClosed.lift_embedding
+#print axioms AllThoseBigRamsey.SupportClosed.neutralise_omits_irreducible
+#print axioms AllThoseBigRamsey.SupportClosed.neutralise_unique
+#print axioms AllThoseBigRamsey.SupportClosed.neutralise_restrict
+#print axioms AllThoseBigRamsey.SupportClosed.neutralise_fixed

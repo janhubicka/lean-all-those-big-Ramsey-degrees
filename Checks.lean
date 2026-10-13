@@ -37,3 +37,9 @@ import AllThoseBigRamsey
 #print axioms AllThoseBigRamsey.DirectedTriangleCertificates.anchored_certificate
 #print axioms AllThoseBigRamsey.DirectedTriangleCertificates.no_empty_rule
 #print axioms AllThoseBigRamsey.DirectedTriangleCertificates.poset_triangle_iff
+#print axioms AllThoseBigRamsey.LatticeAdd.clip_bounds
+#print axioms AllThoseBigRamsey.LatticeAdd.clip_fixed
+#print axioms AllThoseBigRamsey.LatticeAdd.clip_nonzero
+#print axioms AllThoseBigRamsey.LatticeAdd.clip_nonexpansive
+#print axioms AllThoseBigRamsey.LatticeAdd.clip_pair_bound
+#print axioms AllThoseBigRamsey.LatticeAdd.interpolation
