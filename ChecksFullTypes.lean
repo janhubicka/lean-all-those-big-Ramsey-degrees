@@ -21,3 +21,7 @@ import AllThoseBigRamsey.IrreducibleCover
 #print axioms AllThoseBigRamsey.avoids_of_free_cover
 #check AllThoseBigRamsey.NTypeRespectingAmalgamation
 #check AllThoseBigRamsey.TypeRespectingAmalgamation
+
+import AllThoseBigRamsey.MarkedFreeTransfer
+#print axioms AllThoseBigRamsey.MarkedFreeTransfer.forbidden_future_is_prescribed
+#print axioms AllThoseBigRamsey.MarkedFreeTransfer.guarded_of_no_positive_off_image
