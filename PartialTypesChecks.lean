@@ -1,3 +1,4 @@
+import AllThoseBigRamsey.SupportClosed
 import AllThoseBigRamsey.CompletionTransport
 import AllThoseBigRamsey.OneTypeCompletion
 import AllThoseBigRamsey.CanonicalSocle
