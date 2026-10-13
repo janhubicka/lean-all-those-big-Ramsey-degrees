@@ -17,6 +17,7 @@ for mathematical scope. Lean/Std only. Run `lake build`, then
 | `FullTypeMaps` | `FullTypeMap`, `id`, `comp`, `onType_injective`, `future_preserved`, `binary_determined_by_one` |
 | `TypeAmalgamation` | `Continuation`, `FutureTuple`, `Approximates`, `TypeRespectingMap`, `ClassTypeRespectingMap`, `ExtendsByLast`, `NTypeRespectingAmalgamation`, `TypeRespectingAmalgamation` |
 | `IrreducibleCover` | relational `Irreducible`, actual induced embeddings, `range_in_one_side`, `Avoids`, `avoids_of_free_cover`; no size bound on the forbidden structure |
+| `MarkedFreeTransfer` | `GuardedAt`, `forbidden_future_is_prescribed`, `guarded_of_no_positive_off_image`: irreducible-copy obstruction for the binary free-marked TRAP construction |
 | `MetricInterpolation` | natural-number scalar clipping and `interpolation` |
 | `LatticeInterpolation` | `LatticeAdd`, `clip`, `clip_bounds`, `clip_fixed`, `clip_nonzero`, `clip_nonexpansive`, `clip_pair_bound`, `interpolation`: partially ordered scalar core |
 | `GroupLabelTypes` | compatible profiles, anchor determination, restriction injectivity and covered types |
@@ -35,6 +36,32 @@ entries. The naming of parameters and future vertices is injective in the
 `Prefix`/`TailTuple` application. Big Ramsey degrees count all embeddings.
 Enumerations are not relation symbols; every tuple size at most n is tested.
 The maximum-arity convention is sharp, with value one for the empty language.
+
+## Transfer to successor-marked binary free amalgamation
+
+The manuscript main theorem `thm:binary-free-marked-main` proves
+prefix-TRAP for successor (E)-marked (0)-types whenever the reduct is a
+binary relational free amalgamation age described by forbidden induced
+irreducible structures. It needs no separate TRAP assumption on the
+reduct. The proof reconstructs selected source vertices using isolated
+spacers, restores the free-level relation, and compares the candidate
+output with the class-admissible prescribed map on its image types.
+Invalid syntactic singleton types retain the original candidate.
+
+`MarkedFreeTransfer.forbidden_future_is_prescribed` checks a key
+obstruction: a forbidden irreducible copy containing the inserted
+vertex cannot contain an off-image future vertex when all positive
+new relations to off-image vertices are forbidden.
+This lemma is valid at arbitrary arity, but by itself does not show
+that all *higher tuple* types lie in the image; that is why the main
+transfer theorem is presently binary.
+
+The complete class-level binary marked TRAP theorem and the
+E-spacer construction are **written manuscript proofs** and have
+not been packaged as a single Lean theorem yet. The guarded
+forbidden-copy core and proof-dependency checks passed in run
+38462339224 after fixing an independent check-file import order.
+No `sorryAx` is used.
 
 ## Full-type and continuation interfaces
 

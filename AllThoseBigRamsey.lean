@@ -18,3 +18,4 @@ import AllThoseBigRamsey.OneTypeCompletion
 import AllThoseBigRamsey.CanonicalSocle
 import AllThoseBigRamsey.SupportClosed
 import AllThoseBigRamsey.ZeroTypePosetObstruction
+import AllThoseBigRamsey.MarkedFreeTransfer
