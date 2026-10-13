@@ -69,7 +69,15 @@ transitivity and comparability of predecessors. These are useful structural
 consequences of canonical insertion; constructing this interface from concrete
 relational full-type maps and TRAP is NOT formalized here. Meet preservation,
 arbitrary subtuple restriction and the locally finite iteration remain written
-proofs. The new module is submitted for CI; no local Lean check is claimed.
+proofs.
+
+The new module and complete library passed at
+`c21d5a9063119a9cce047cf2dbad68158106f39c`, Actions run `38408635079`, job
+`115334834029`. Both dependency reports and the rejection of unchecked
+declarations passed. The first attempt lacked a Decidable instance for the
+Boolean triangle predicate; adding that instance changed no statement.
+This checkpoint verifies structural transport and the finite obstructions,
+not an end-to-end theorem about relational type maps or arbitrary partial types.
 
 ## Validation and remaining work
 
