@@ -19,6 +19,7 @@ for mathematical scope. Lean/Std only. Run `lake build`, then
 | `DirectedTriangleRepair` | oriented triangle convention; `LocalLaws`, `AnchoredLaws`, `Problem.step_preserves_at`, `Problem.uniform_choice` |
 | `DirectedTriangleCertificates` | all 128 oriented palettes; 16 small-AP classes; 15 local repairs; anchored repair for palette 37; `no_empty_rule`; `poset_triangle_iff` |
 | `CompletionTransport` | `PrefixSystem` tree-order laws; `CoherentCompletion.below_iff`, `compatible_iff`; `no_common_socle_completion`; `antichain_not_order_reflected_in_chain` |
+| `OneTypeCompletion` | actual full diagrams: `neutral`, `neutral_base`, `neutral_extends`, `complete`, `complete_prescribed`, `complete_extends` |
 
 Full types include internal relations, unary/diagonal information and repeated
 entries. The naming of parameters and future vertices is injective in the
@@ -71,13 +72,42 @@ relational full-type maps and TRAP is NOT formalized here. Meet preservation,
 arbitrary subtuple restriction and the locally finite iteration remain written
 proofs.
 
-The new module and complete library passed at
+The completion-transport module and complete library passed at
 `c21d5a9063119a9cce047cf2dbad68158106f39c`, Actions run `38408635079`, job
 `115334834029`. Both dependency reports and the rejection of unchecked
 declarations passed. The first attempt lacked a Decidable instance for the
 Boolean triangle predicate; adding that instance changed no statement.
 This checkpoint verifies structural transport and the finite obstructions,
 not an end-to-end theorem about relational type maps or arbitrary partial types.
+
+## Concrete one-type prescriptions
+
+`OneTypeCompletion` uses the existing `FullType` relational diagrams directly.
+For a base A, a one-point extension B of A, and a full one-type p over A,
+`neutral B p` keeps the entire base B and the entire old type p, and assigns
+false to tuples meeting both the inserted vertex and the old future vertex.
+Its restriction proofs include negative relations, loops and repeated entries.
+`complete` replaces this default by the prescribed full type on any chosen
+set S; its two main lemmas retain the prescription and every old relation.
+These constructions are for full one-types, although their relational language
+may have arbitrary arities.
+
+The initial concrete module passed at
+`472691bc5bef4ad394c294480bc34fc343ddbb33`, Actions run `38419931632`, job
+`115374262354`, with test-merge checkout
+`729c20b042a4e33408d7887a1b7f2dbc5a04bcd2`. The new endpoints use only standard
+Lean axioms, without `sorryAx`. Deprecated conditional simplification names
+were replaced; the cleaned code passed at
+`cce6887cb32534178a67787b1223d9afd6e1986d`, Actions run `38421563336`.
+
+This does not prove membership in any restricted class. The manuscript's
+all-arity extension uses exact type-vertex supports in individual relation
+tuples; a whole-type neutral fallback is not coherent for arbitrary larger
+types. The coherent higher-type family, the unrestricted continuation proof,
+the image-continuation recognition lemma, the finite no-age test and the
+class-level TRAP theorem remain written proofs. Outside binary free amalgamation,
+the prescribed domain still has to be the image of a known admissible F.
+The generic raw partial-diagram completion claim is not assumed.
 
 ## Validation and remaining work
 
