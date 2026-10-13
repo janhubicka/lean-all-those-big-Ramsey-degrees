@@ -1,5 +1,6 @@
 import AllThoseBigRamsey.CompletionTransport
 import AllThoseBigRamsey.OneTypeCompletion
+import AllThoseBigRamsey.CanonicalSocle
 
 #print axioms AllThoseBigRamsey.CompletionTransport.PrefixSystem.below_antisymm
 #print axioms AllThoseBigRamsey.CompletionTransport.PrefixSystem.below_trans
@@ -12,3 +13,10 @@ import AllThoseBigRamsey.OneTypeCompletion
 #print axioms AllThoseBigRamsey.OneTypeCompletion.neutral_extends
 #print axioms AllThoseBigRamsey.OneTypeCompletion.complete_prescribed
 #print axioms AllThoseBigRamsey.OneTypeCompletion.complete_extends
+#print axioms AllThoseBigRamsey.CanonicalSocle.FiniteProblem.choose_mem
+#print axioms AllThoseBigRamsey.CanonicalSocle.Scheme.complete_append_prefix
+#print axioms AllThoseBigRamsey.CanonicalSocle.Scheme.state_input
+#print axioms AllThoseBigRamsey.CanonicalSocle.Scheme.preserves_compatibility
+#print axioms AllThoseBigRamsey.CanonicalSocle.Scheme.decode_complete
+#print axioms AllThoseBigRamsey.CanonicalSocle.Scheme.reflects_prefix_of_faithful
+#print axioms AllThoseBigRamsey.CanonicalSocle.visible_independent
