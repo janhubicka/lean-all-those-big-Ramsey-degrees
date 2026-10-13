@@ -10,6 +10,7 @@ for mathematical scope. Lean/Std only. Run `lake build`, then
 | Module | Main interfaces |
 | --- | --- |
 | `Relational` | structures, induced embeddings, separate enumerations, ordinary embedding big Ramsey degrees |
+| `ZeroTypePosetObstruction` | `basePrime_valid`, `continuation_valid`, `no_amalgam_of_poset_and_E`: kernel-checked nonamalgamation obstruction for successor-marked posets |
 | `FullTypes` | full atomic diagrams, evaluation, coordinate and base restriction |
 | `TypeRespecting` | `Prefix`, `TailTuple`, `NTypeRespecting`, `MaximumArity`, `TypeRespecting`; identity/composition/monotonicity |
 | `BinaryFullTypes` | `FullType.futureDiagram`, `FullType.binary_ext`: reconstruct a binary full type from singletons AND its internal future diagram |
@@ -230,6 +231,33 @@ finite number of bounded integer metrics on a common vertex set. Prescribed
 type maps may mix coordinates. Metric endpoint geometry, the induced local
 triangle repair, cycle completion and the relational TRAP interpretation are
 written proofs, not yet Lean instantiations of this scalar module.
+
+## Failure of the general K-to-partial-K TRAP transfer
+
+The manuscript now proves an explicit full commuting TRAP square showing
+that ordinary strict partial orders have TRAP but their literal
+successor E-marked 0-type class fails **prefix-TRAP**. The latter class
+is prefix-closed, not hereditary under arbitrary induced restrictions.
+The square consists of K-class-admissible maps F and F', an unrestricted
+candidate G0 with G0 F=F' on all syntactic full 1-types, and a B-continuation
+D which cannot be extended over B'. The obstruction is z<a<x forcing
+z<x, hence E(z,x) and E(b,x), contradicting D.
+
+The new ZeroTypePosetObstruction module formally checks the two
+three-point bases and proves that contradiction for an arbitrary
+target position of x, so inserting filler vertices does not help.
+The full class-level map F/F' construction is proved in the manuscript
+and checked by the exhaustive Python regression, but it is NOT yet
+formalised end-to-end in Lean. The negative conclusion is not
+a proof of the purported positive transfer; that implication is false.
+
+The complete library and all three dependency-check files passed at
+commit `0a26c9d8d290004f043e0c9256238528e20e6941`,
+GitHub Actions run `38448128338`, job `115471776369`.
+The finite witnesses require no axioms, while
+`no_amalgam_of_poset_and_E` uses only standard
+`propext` and `Quot.sound`; no `sorryAx` occurs.
+No independently spawned referee has signed off.
 
 ## Validation and remaining work
 
