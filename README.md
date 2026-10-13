@@ -12,6 +12,7 @@ for mathematical scope. Lean/Std only. Run `lake build`, then
 | `FullTypes` | full atomic diagrams, evaluation, coordinate and base restriction |
 | `TypeRespecting` | `Prefix`, `TailTuple`, `NTypeRespecting`, `MaximumArity`, `TypeRespecting`; identity/composition/monotonicity |
 | `MetricInterpolation` | natural-number scalar clipping and `interpolation` |
+| `LatticeInterpolation` | `LatticeAdd`, `clip`, `clip_bounds`, `clip_fixed`, `clip_nonzero`, `clip_nonexpansive`, `clip_pair_bound`, `interpolation`: partially ordered scalar core |
 | `GroupLabelTypes` | compatible profiles, anchor determination, restriction injectivity and covered types |
 | `TwoColourTriangles` | exact small-amalgamation classification of two-colour palettes |
 | `TriangleRepair` | `RepairSystem`, `step_anchor`, `uniform_choice` on arbitrary type sets and finite bases |
@@ -169,6 +170,23 @@ of the desired conclusion as an assumption. Commit
 build and dependency audits in Actions run `38428150366`;
 the first attempt required correcting the final decoder rewrite.
 No nonstandard axioms or sorry are used.
+
+## Lattice-valued interpolation
+
+`LatticeAdd` lists standard lattice and commutative monoid laws, with additive
+translations preserving meets and joins. It assumes neither a linear order nor
+an interpolation conclusion. The proved rule is
+`clip lower upper original = meet (join lower original) upper`.
+The pair-bound proof distributes addition over both meets; it never assumes
+two arbitrary distance values are comparable. The positivity result separately
+assumes that a meet of nonzero values is nonzero.
+
+The manuscript instantiates this argument for finite lattice-valued metrics,
+including distributive-lattice ultrametrics with meet-irreducible zero and any
+finite number of bounded integer metrics on a common vertex set. Prescribed
+type maps may mix coordinates. Metric endpoint geometry, the induced local
+triangle repair, cycle completion and the relational TRAP interpretation are
+written proofs, not yet Lean instantiations of this scalar module.
 
 ## Validation and remaining work
 

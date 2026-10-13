@@ -6,6 +6,7 @@ import AllThoseBigRamsey.GroupLabelTypes
 import AllThoseBigRamsey.TwoColourTriangles
 import AllThoseBigRamsey.TriangleRepair
 import AllThoseBigRamsey.ThreeColourCertificates
+import AllThoseBigRamsey.LatticeInterpolation
 import AllThoseBigRamsey.DirectedTriangleRepair
 import AllThoseBigRamsey.DirectedTriangleCertificates
 import AllThoseBigRamsey.CompletionTransport
