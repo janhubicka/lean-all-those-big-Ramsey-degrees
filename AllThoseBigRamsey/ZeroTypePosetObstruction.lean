@@ -36,24 +36,6 @@ instance : Decidable (IsPartialPoset ContinuationR ContinuationE) := by
 theorem basePrime_valid : IsPartialPoset BasePrimeR BasePrimeE := by decide
 theorem continuation_valid : IsPartialPoset ContinuationR ContinuationE := by decide
 
-/-- In any common extension, z<a<x forces z<x. The E-support axiom
-then forces E(z,x); E-column closure forces E(b,x), contradicting
-the negative atom of the given B-continuation. Here the fixed base
-labels are a=0, b=1, z=2 and x may be arbitrarily far beyond z. -/
-theorem no_common_continuation
-    (R E : Nat → Nat → Prop)
-    (x : Nat) (_hx : 2 < x)
-    (trans : ∀ i j k, R i j → R j k → R i k)
-    (support : ∀ i j, i < j → R j i → E i j)
-    (supportForward : ∀ i j, i < j → R i j → E i j)
-    (down : ∀ i j k, i < j → E j k → E i k)
-    (z_below_a : R 2 0)
-    (a_below_x : R 0 x)
-    (not_E_b_x : ¬ E 1 x) : False := by
-  have hzx : R 2 x := trans 2 0 x z_below_a a_below_x
-  have hE : E 2 x := supportForward 2 x _hx hzx
-  exact not_E_b_x (down 1 2 x (by omega) hE)
-
 /-- The finite consequence does not rely on where the old future
 vertex is placed. A filler between z and x cannot repair the conflict. -/
 theorem no_amalgam_of_poset_and_E
