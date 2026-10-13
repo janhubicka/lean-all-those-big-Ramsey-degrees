@@ -62,8 +62,8 @@ theorem neutral_base (B p : FullType A 1) (R : L.Symbol)
     neutralRel B p R (fun i => Sum.inl (q i)) ↔ B.diagram.rel R q := by
   classical
   by_cases hz : HitsInserted (fun i => Sum.inl (q i))
-  · simp only [neutralRel, if_pos hz, if_neg (no_future_base q), toBase]
-  · simp only [neutralRel, if_neg hz]
+  · simp only [neutralRel, ite_eq_left hz, ite_eq_right (no_future_base q), toBase]
+  · simp only [neutralRel, ite_eq_right hz]
     have hb (i : Fin (L.arity R)) : ∃ a, q i = Sum.inl a := by
       cases hq : q i with
       | inl a => exact ⟨a, rfl⟩
@@ -87,7 +87,7 @@ def Extends (B p : FullType A 1) (q : FullType B.diagram 1) : Prop :=
 
 theorem neutral_extends (B p : FullType A 1) : Extends B p (neutral B p) := by
   intro R a
-  simp only [neutral, neutralRel, if_neg (no_inserted_old a), toOld_old]
+  simp only [neutral, neutralRel, ite_eq_right (no_inserted_old a), toOld_old]
 
 /-- Complete a prescription on any set of full one-types, not only valid types. -/
 noncomputable def complete (B : FullType A 1) (S : FullType A 1 → Prop)
@@ -99,7 +99,7 @@ noncomputable def complete (B : FullType A 1) (S : FullType A 1 → Prop)
 theorem complete_prescribed (B : FullType A 1) (S : FullType A 1 → Prop)
     (θ : (p : FullType A 1) → S p → FullType B.diagram 1)
     (p : FullType A 1) (hp : S p) : complete B S θ p = θ p hp := by
-  simp only [complete, dif_pos hp]
+  simp only [complete, dite_eq_left hp]
 
 theorem complete_extends (B : FullType A 1) (S : FullType A 1 → Prop)
     (θ : (p : FullType A 1) → S p → FullType B.diagram 1)
@@ -109,7 +109,7 @@ theorem complete_extends (B : FullType A 1) (S : FullType A 1 → Prop)
   by_cases hp : S p
   · rw [complete_prescribed B S θ p hp]
     exact hθ p hp
-  · simp only [complete, dif_neg hp]
+  · simp only [complete, dite_eq_right hp]
     exact neutral_extends B p
 
 end AllThoseBigRamsey.OneTypeCompletion
