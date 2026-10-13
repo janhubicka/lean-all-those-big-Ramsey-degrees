@@ -22,6 +22,7 @@ for mathematical scope. Lean/Std only. Run `lake build`, then
 | `OneTypeCompletion` | actual full diagrams: `neutral`, `neutral_base`, `neutral_extends`, `complete`, `complete_prescribed`, `complete_extends` |
 | `CanonicalSocle` | ordered finite-solution choice; `Scheme.complete_append_prefix`, `preserves_compatibility`, `decode_complete`, `reflects_prefix_of_faithful`, `visible_independent` |
 | `SupportClosed` | `PairMarked`, `neutralise`, `Irreducible`, `lift_embedding`, `neutralise_omits_irreducible`, `neutralise_unique`, `neutralise_restrict` |
+| `SupportedDiagram` | `Partial`, `Partial.neutral`, `Partial.Extends`, `Partial.neutral_extends`, `Partial.neutral_omits_irreducible`, `Partial.neutral_restrict` |
 
 Full types include internal relations, unary/diagonal information and repeated
 entries. The naming of parameters and future vertices is injective in the
@@ -128,6 +129,15 @@ that same map embeds F into the original structure. All negative and
 repeated-coordinate atomic information is treated by induced embeddings.
 The module also proves neutralisation uniqueness when supported diagrams
 agree, and commutation with restrictions under injective maps.
+The additional `SupportedDiagram` module represents the actual
+specified positive and negative atomic values on each marked support,
+defines the neutral relational structure, proves that it retains all
+supported facts, and proves that an arbitrary irreducible F forbidden
+by a class-valid completion remains forbidden by the neutral one.
+Its neutralisation also commutes with every injective restriction.
+This closes the basic partial-diagram-to-full-structure step in Lean,
+rather than merely postulating an abstract relation-deletion map.
+
 The complete Lean build and both dependency reports passed at commit
 `1fdc9e4093f517d9d8144457b669f0d54a36d883` in Actions run
 `38434221232` (no `sorryAx`; standard Lean axioms only). The first CI
