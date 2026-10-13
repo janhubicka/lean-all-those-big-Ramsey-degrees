@@ -9,3 +9,4 @@ import AllThoseBigRamsey.ThreeColourCertificates
 import AllThoseBigRamsey.DirectedTriangleRepair
 import AllThoseBigRamsey.DirectedTriangleCertificates
 import AllThoseBigRamsey.CompletionTransport
+import AllThoseBigRamsey.OneTypeCompletion
