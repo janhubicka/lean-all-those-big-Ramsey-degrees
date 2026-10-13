@@ -19,3 +19,13 @@ import AllThoseBigRamsey
 #print axioms AllThoseBigRamsey.GroupLabelTypes.same_profile_pair
 #print axioms AllThoseBigRamsey.TwoColourTriangles.classification
 #print axioms AllThoseBigRamsey.TwoColourTriangles.mixed_only_fails
+#print axioms AllThoseBigRamsey.TriangleRepair.run_fixed
+#print axioms AllThoseBigRamsey.TriangleRepair.run_pairs
+#print axioms AllThoseBigRamsey.TriangleRepair.step_anchor
+#print axioms AllThoseBigRamsey.TriangleRepair.run_covers
+#print axioms AllThoseBigRamsey.TriangleRepair.uniform_choice
+#print axioms AllThoseBigRamsey.ThreeColourCertificates.repair_certificates_checked
+#print axioms AllThoseBigRamsey.ThreeColourCertificates.obstruction_certificates_checked
+#print axioms AllThoseBigRamsey.ThreeColourCertificates.relabellings_checked
+#print axioms AllThoseBigRamsey.ThreeColourCertificates.classification_checked
+#print axioms AllThoseBigRamsey.ThreeColourCertificates.classified_smallSAP
