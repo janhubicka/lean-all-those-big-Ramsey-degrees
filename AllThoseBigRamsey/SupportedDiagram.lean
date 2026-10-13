@@ -73,8 +73,7 @@ theorem neutral_omits_irreducible
   exact hfree ⟨lift_embedding D P.mark hF e'⟩
 
 /-- Pull back marks and supported values along an injective restriction. -/
-def restrict (P : Partial L α) (f : β → α)
-    (hf : Function.Injective f) : Partial L β where
+def restrict (P : Partial L α) (f : β → α) : Partial L β where
   mark := fun x y => P.mark (f x) (f y)
   value := fun R q hq =>
     P.value R (fun i => f (q i)) (by
@@ -86,7 +85,7 @@ positive, negative, unary, repeated-entry and higher-arity tuples. -/
 theorem neutral_restrict
     (P : Partial L α) (f : β → α) (hf : Function.Injective f)
     (R : L.Symbol) (q : Fin (L.arity R) → β) :
-    (P.restrict f hf).neutral.rel R q ↔
+    (P.restrict f).neutral.rel R q ↔
       P.neutral.rel R (fun i => f (q i)) := by
   constructor
   · rintro ⟨hm, hv⟩
