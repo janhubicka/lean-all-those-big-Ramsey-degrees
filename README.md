@@ -1,56 +1,141 @@
 # All those big Ramsey degrees — Lean
 
-Companion formalization of `janhubicka/All-those-big-Ramsey-degrees`.
-The manuscript is authoritative for mathematical scope. This is a Lean/Std-only
-library with no mathlib dependency. Run `lake build`, then `lake env lean Checks.lean`.
+Companion to `janhubicka/All-those-big-Ramsey-degrees`, which is authoritative
+for mathematical scope. Lean/Std only. Run `lake build`, then
+`lake env lean Checks.lean` and `lake env lean PartialTypesChecks.lean`.
 
 ## Interface index
 
 | Module | Main interfaces |
 | --- | --- |
-| `Relational` | `Language`, `RelStructure`, `Embedding`, `Enumeration`, `EnumeratedStructure`, `OrderedEmbedding`, `BigRamseyBound`, `IsBigRamseyDegree`, `HasFiniteBigRamseyDegrees` |
-| `FullTypes` | `FullType`, `typeOf`, `SameFullType`, `evaluate_reindex`, `evaluate_rebase`, coordinate and parameter restriction |
-| `TypeRespecting` | `Prefix`, `TailTuple`, `SameType`, `NTypeRespecting`, `MaximumArity`, `TypeRespecting`; identities, composition and downward monotonicity |
-| `MetricInterpolation` | `clip`, its bounds/fixed-value/positivity/Lipschitz/pair-sum lemmas, `interpolation`: natural-number scalar core |
-| `GroupLabelTypes` | `Compatible`, `eq_of_anchor`, `restrict_compatible`, `restriction_injective`, `typeMap_covers`, `same_profile_pair` |
-| `TwoColourTriangles` | `Triangle`, `SmallSAP`, `Listed`, `classification`, `mixed_only_fails`: exact small-base palette classification |
-| `TriangleRepair` | `RepairSystem`, `step`, `run`, `AtAnchor`, `run_fixed`, `run_pairs`, `step_anchor`, `run_anchor`, `run_covers`, `uniform_choice` |
-| `ThreeColourCertificates` | `Triangle`, `RepairLaw`, `Obstruction`, `SmallSAP`, `certifiedSystem`; checked repair/obstruction/relabelling/classification certificates and `classified_smallSAP` |
+| `Relational` | structures, induced embeddings, separate enumerations, ordinary embedding big Ramsey degrees |
+| `FullTypes` | full atomic diagrams, evaluation, coordinate and base restriction |
+| `TypeRespecting` | `Prefix`, `TailTuple`, `NTypeRespecting`, `MaximumArity`, `TypeRespecting`; identity/composition/monotonicity |
+| `MetricInterpolation` | natural-number scalar clipping and `interpolation` |
 | `LatticeInterpolation` | `LatticeAdd`, `clip`, `clip_bounds`, `clip_fixed`, `clip_nonzero`, `clip_nonexpansive`, `clip_pair_bound`, `interpolation`: partially ordered scalar core |
+| `GroupLabelTypes` | compatible profiles, anchor determination, restriction injectivity and covered types |
+| `TwoColourTriangles` | exact small-amalgamation classification of two-colour palettes |
+| `TriangleRepair` | `RepairSystem`, `step_anchor`, `uniform_choice` on arbitrary type sets and finite bases |
+| `ThreeColourCertificates` | symmetric repair, obstruction, relabelling and exhaustive classification certificates |
+| `DirectedTriangleRepair` | oriented triangle convention; `LocalLaws`, `AnchoredLaws`, `Problem.step_preserves_at`, `Problem.uniform_choice` |
+| `DirectedTriangleCertificates` | all 128 oriented palettes; 16 small-AP classes; 15 local repairs; anchored repair for palette 37; `no_empty_rule`; `poset_triangle_iff` |
+| `CompletionTransport` | `PrefixSystem` tree-order laws; `CoherentCompletion.below_iff`, `compatible_iff`; `no_common_socle_completion`; `antichain_not_order_reflected_in_chain` |
+| `OneTypeCompletion` | actual full diagrams: `neutral`, `neutral_base`, `neutral_extends`, `complete`, `complete_prescribed`, `complete_extends` |
+| `CanonicalSocle` | ordered finite-solution choice; `Scheme.complete_append_prefix`, `preserves_compatibility`, `decode_complete`, `reflects_prefix_of_faithful`, `visible_independent` |
 
-Full types mean **full quantifier-free types**, including internal relations,
-unary information and repeated relation entries. Big Ramsey degrees count
-embeddings. Enumeration is separate from the language. `NTypeRespecting n` tests
-all tuple sizes at most `n`, including finite tails. `MaximumArity` requires a
-positive sharp bound (or value one), not an arbitrary arity parameter.
+Full types include internal relations, unary/diagonal information and repeated
+entries. The naming of parameters and future vertices is injective in the
+`Prefix`/`TailTuple` application. Big Ramsey degrees count all embeddings.
+Enumerations are not relation symbols; every tuple size at most n is tested.
+The maximum-arity convention is sharp, with value one for the empty language.
 
-`typeOf` and `SameFullType` use atomic relational diagrams. To interpret these
-as realised full types, parameter and future-vertex naming together must be
-injective. The `Prefix`/`TailTuple` application satisfies this requirement.
-More general coordinate restrictions are available for pulled-back diagrams.
+## Directed and anchored repair
 
-## Uniform triangle repair
+`T a b c` means labels 01=a, 12=b, 02=c. Pair reversal is an involution, not
+an assumption of symmetry. In `DirectedTriangleRepair.Problem`, the initial
+rule fits one fixed root anchor. The output rule processes an arbitrary finite
+list of additional anchors, preserves the root, every previously fixed anchor,
+all possible future-pair relations (including repeated types), and all prescribed
+image values. This is not a bounded-base search.
 
-`uniform_choice` constructs one rule on an arbitrary type set Q by processing
-any list covering the finite base. It proves simultaneously that every anchor
-triangle is valid, every possible future-pair colour is preserved, and every
-protected value which was initially valid is fixed.
+The directed certificates use labels 0=forward, 1=backward, 2=absent. Their seven
+triangle orbits are transitive tournament, cyclic tournament, directed path,
+in-star, out-star, single arc, empty. Small strong amalgamation is tested on
+actual one-point spans over bases of size at most three. The manuscript proves
+that this finite test is sufficient for triangle classes. The 16 surviving
+palettes are 33,35,37,63,89,90,91,92,95,97,99,121,124,125,126,127.
 
-Q need not be finite, and the base size has no bound. `RepairSystem` contains
-three finite colour identities, not an assumption of the desired uniform-choice
-conclusion. The theorem's seed pair law and valid base/type profiles are explicit.
-The manuscript derives them from the genuine type-amalgamation request.
+Fifteen have local repair tables. The remaining palette 37 has an anchored table
+for each of its 18 admissible labelled base triangles. `no_empty_rule` excludes
+empty-source amalgamation requests there. Palette 121 is checked to encode
+exactly transitivity of the strict relation on a three-vertex structure.
 
-The certificate module exhausts all 1024 symmetric three-colour triangle
-palettes up to the six colour permutations. Its 208 representatives consist of
-23 with displayed repair operations, the square palette (169), and 184 with
-explicit failed one-point strong-amalgamation requests over bases of size at
-most three. In the original labels the counts are 106, 6 and 912. The finite
-identities, genuine obstruction validity, relabellings and exhaustive coverage
-are checked by ordinary `decide` in the Lean kernel, not `native_decide`.
-The displayed counts are also checked by the manuscript's separate verifier.
-The square has no repair operation of this form; the manuscript proves its
-TRAP through finite homogeneous quotients and valid-type coverage.
+All finite certificates use ordinary kernel `decide`, not `native_decide`.
+The search generator is not part of the trusted proof. Full relational type maps,
+class-level uniform continuation/TRAP, and the finite-quotient interpretation of
+the symmetric exception remain written manuscript arguments. In particular, the
+certificate theorem alone is not an end-to-end Lean proof of a class-level result.
+
+## Partial types and coherent completion
+
+The companion section distinguishes literal successor E-marked types from
+partial diagrams with undetermined relations. Individual completability does
+not imply a common-socle completion, even for two-distance ultrametrics.
+The Boolean certificate `no_common_socle_completion` verifies the finite
+obstruction. The class's TRAP proof remains a written mathematical argument.
+
+`CoherentCompletion` records a map commuting with prefixes, a strictly increasing
+level map, an erasure left inverse, and an independent map on socles with its
+own erasure. The order and compatibility equivalences are derived, not fields
+of the interface. `PrefixSystem` also proves reflexivity, antisymmetry,
+transitivity and comparability of predecessors. These are useful structural
+consequences of canonical insertion; constructing this interface from concrete
+relational full-type maps and TRAP is NOT formalized here. Meet preservation,
+arbitrary subtuple restriction and the locally finite iteration remain written
+proofs.
+
+The completion-transport module and complete library passed at
+`c21d5a9063119a9cce047cf2dbad68158106f39c`, Actions run `38408635079`, job
+`115334834029`. Both dependency reports and the rejection of unchecked
+declarations passed. The first attempt lacked a Decidable instance for the
+Boolean triangle predicate; adding that instance changed no statement.
+This checkpoint verifies structural transport and the finite obstructions,
+not an end-to-end theorem about relational type maps or arbitrary partial types.
+
+## Concrete one-type prescriptions
+
+`OneTypeCompletion` uses the existing `FullType` relational diagrams directly.
+For a base A, a one-point extension B of A, and a full one-type p over A,
+`neutral B p` keeps the entire base B and the entire old type p, and assigns
+false to tuples meeting both the inserted vertex and the old future vertex.
+Its restriction proofs include negative relations, loops and repeated entries.
+`complete` replaces this default by the prescribed full type on any chosen
+set S; its two main lemmas retain the prescription and every old relation.
+These constructions are for full one-types, although their relational language
+may have arbitrary arities.
+
+The initial concrete module passed at
+`472691bc5bef4ad394c294480bc34fc343ddbb33`, Actions run `38419931632`, job
+`115374262354`, with test-merge checkout
+`729c20b042a4e33408d7887a1b7f2dbc5a04bcd2`. The new endpoints use only standard
+Lean axioms, without `sorryAx`. Deprecated conditional simplification names
+were replaced; the cleaned code passed at
+`cce6887cb32534178a67787b1223d9afd6e1986d`, Actions run `38421563336`.
+
+This does not prove membership in any restricted class. The manuscript's
+all-arity extension uses exact type-vertex supports in individual relation
+tuples; a whole-type neutral fallback is not coherent for arbitrary larger
+types. The coherent higher-type family, the unrestricted continuation proof,
+the image-continuation recognition lemma, the finite no-age test and the
+class-level TRAP theorem remain written proofs. Outside binary free amalgamation,
+the prescribed domain still has to be the image of a known admissible F.
+The generic raw partial-diagram completion claim is not assumed.
+
+## Canonical socle recursion
+
+For locally admissible socle steps, the manuscript constructs a finite,
+nonempty set of TRAP solutions and selects the least by a fixed ordering
+of atomic output tables. This selection is shared by every occurrence
+of a marked socle. The visible composite after the step depends only on
+the prescribed action on the image, not on values chosen outside it.
+
+`CanonicalSocle` formalises the deterministic list recursion and proves
+its prefix and same-socle compatibility preservation; the output agrees
+on common source prefixes. It also proves that the visible composite
+of two maps agreeing on an image is equal. An optional letterwise decoder
+gives prefix reflection. **The decoder is an additional hypothesis**:
+canonical choices alone can collapse distinct E-marked socles.
+The manuscript isolates a finite simultaneous sibling-separation condition
+sufficient for a faithful socle tree embedding and exact meets.
+
+This Lean module does not formalise the local no-age test, the full
+class-level TRAP property, or their construction from arbitrary partial
+diagrams. It remains a separate structural component, not a representation
+of the desired conclusion as an assumption. Commit
+`1f0661ce93b502e11327874452054e5f2fc374ed` passed the full
+build and dependency audits in Actions run `38428150366`;
+the first attempt required correcting the final decoder rewrite.
+No nonstandard axioms or sorry are used.
 
 ## Lattice-valued interpolation
 
@@ -69,41 +154,28 @@ type maps may mix coordinates. Metric endpoint geometry, the induced local
 triangle repair, cycle completion and the relational TRAP interpretation are
 written proofs, not yet Lean instantiations of this scalar module.
 
-## Validation
+## Validation and remaining work
 
-Foundations at `b44a67b98744590825680904a5d8d53140dd7ffb` passed run
-`38271277558`; metric interpolation at `36c600fa1cedca9d00cc5b68a4932ddada42c080`
-passed run `38279289894`. Group-profile and two-colour modules at
-`424ea0ad09e6e3bdf63efd1a78062e90ac763b5c` passed run `38295072697`.
-Uniform repair and three-colour certificates, with consolidated dependency
-reports, passed at `04b7a27d80032971afe45306886aa70869d100a1` in Actions run
-`38299496216`, job `114978660403`.
-Lattice interpolation at `ffa04e9450788f05b26b685e7166ed2c85cfcc32` passed the
-build and proof-dependency checks in run `38303147784`, job `114990695365`.
-These runs used Lean `v4.35.0-rc3`. The present integration retains both branches
-and requires its own consolidated CI run. No custom axiom or proof placeholder
-is used. `Checks.lean` is the single dependency-report entry point.
+Foundations passed at b44a67b98744, metric scalar interpolation at 36c600fa1ced,
+group/two-colour interfaces at 424ea0ad09e6. Symmetric arbitrary-base repair and
+its certificates passed at 04b7a27d8003, Actions run 38299496216.
 
-## Remaining interfaces and proofs
+Both directed modules and the complete library passed at
+`d99467e1771a5003592fd103cff863f4bed497c4`, Actions run `38306671021`, job
+`115002522912`, on Lean `v4.35.0-rc3`. The checked PR merge was
+`3a5164bc1a52413b29ce271147e5756a803afd88`. The consolidated `Checks.lean`
+report covers the arbitrary-base anchored theorem, exhaustive palette
+classification, local and anchored tables, empty-source obstruction and literal
+poset transitivity. Only standard Lean axioms occur; no `sorryAx` is reported.
+The finite certificate module compiled in 104 seconds. Earlier instance-size and
+evaluation-order failures were repaired without weakening any finite claim.
 
-Coherent full-type maps, their uniform continuation property and the manuscript
-TRAP property are not yet concretely encoded. The split equivalence, arity
-reduction and covered-type lemma retain written proofs. For metric TRAP the
-endpoint geometry and all-continuations interpretation still need formalizing.
-The natural-number and lattice scalar modules have different explicit inputs;
-no silent specialization of a linear-order argument to a lattice is made.
+Next formalize the exact full-type-map and class-relative continuation interfaces
+and connect the checked constraint constructions to them. Exact splits, the
+maximum-arity reduction and concrete metric endpoint geometry remain to be
+formalized. The general cycles-and-cliques theorem, beyond the stated small-pair
+triangle cases, is not assumed.
 
-For triangle repair, connect the checked invariant and certificates to full-type
-interfaces. For finite homogeneous quotients, formalize coordinate fibres,
-saturation by a continuation, and valid-type surjectivity. `classified_smallSAP`
-assumes small AP for the canonical representative; the checked colour equivalence
-supports the written relabelling argument. It does not itself assert an undefined
-class-level strong AP or TRAP predicate. For lattice metrics, construct finite
-lower/upper endpoints and instantiate the local-repair theorem.
-
-The manuscript proves TRAP for all 112 strong-AP three-colour triangle palettes
-and for the stated lattice-valued metric families, for arbitrary finite bases.
-These are not yet end-to-end Lean TRAP theorems. The unrestricted cycles-and-cliques
-conjecture and general upper-bound Ramsey theorem remain unproved here.
-Internal weak-type comparison is absent from this public repository. Mathematical
-reviews are self-audits, not independently spawned referee reports.
+The lattice-valued interpolation development is on a separate branch; this change
+does not overwrite it. Internal weak-type comparison material stays out of the
+public Lean repository. No independently spawned referee report is claimed.
