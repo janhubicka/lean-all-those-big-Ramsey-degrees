@@ -9,6 +9,10 @@ import AllThoseBigRamsey.ThreeColourCertificates
 import AllThoseBigRamsey.LatticeInterpolation
 import AllThoseBigRamsey.DirectedTriangleRepair
 import AllThoseBigRamsey.DirectedTriangleCertificates
+import AllThoseBigRamsey.BinaryFullTypes
+import AllThoseBigRamsey.FullTypeMaps
+import AllThoseBigRamsey.TypeAmalgamation
+import AllThoseBigRamsey.IrreducibleCover
 import AllThoseBigRamsey.CompletionTransport
 import AllThoseBigRamsey.OneTypeCompletion
 import AllThoseBigRamsey.CanonicalSocle

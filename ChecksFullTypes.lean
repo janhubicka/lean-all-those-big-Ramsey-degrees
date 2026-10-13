@@ -1,0 +1,23 @@
+import AllThoseBigRamsey.BinaryFullTypes
+import AllThoseBigRamsey.FullTypeMaps
+import AllThoseBigRamsey.TypeAmalgamation
+import AllThoseBigRamsey.IrreducibleCover
+
+#print axioms AllThoseBigRamsey.FullType.binary_ext
+#print axioms AllThoseBigRamsey.FullTypeMap.id
+#print axioms AllThoseBigRamsey.FullTypeMap.comp
+#print axioms AllThoseBigRamsey.FullTypeMap.onType_injective
+#print axioms AllThoseBigRamsey.FullTypeMap.future_preserved
+#print axioms AllThoseBigRamsey.FullTypeMap.binary_determined_by_one
+#print axioms AllThoseBigRamsey.Continuation.mem_prefix
+#print axioms AllThoseBigRamsey.Continuation.future_evaluate_injective
+#print axioms AllThoseBigRamsey.Continuation.Approximates.id
+#print axioms AllThoseBigRamsey.Continuation.Approximates.comp
+#print axioms AllThoseBigRamsey.TypeRespectingMap.id
+#print axioms AllThoseBigRamsey.TypeRespectingMap.comp
+#print axioms AllThoseBigRamsey.ClassTypeRespectingMap.id
+#print axioms AllThoseBigRamsey.ClassTypeRespectingMap.comp
+#print axioms AllThoseBigRamsey.Irreducible.range_in_one_side
+#print axioms AllThoseBigRamsey.avoids_of_free_cover
+#check AllThoseBigRamsey.NTypeRespectingAmalgamation
+#check AllThoseBigRamsey.TypeRespectingAmalgamation

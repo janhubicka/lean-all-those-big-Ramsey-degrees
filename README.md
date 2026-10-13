@@ -2,7 +2,8 @@
 
 Companion to `janhubicka/All-those-big-Ramsey-degrees`, which is authoritative
 for mathematical scope. Lean/Std only. Run `lake build`, then
-`lake env lean Checks.lean` and `lake env lean PartialTypesChecks.lean`.
+`lake env lean Checks.lean`, `lake env lean ChecksFullTypes.lean`, and
+`lake env lean PartialTypesChecks.lean`.
 
 ## Interface index
 
@@ -11,6 +12,10 @@ for mathematical scope. Lean/Std only. Run `lake build`, then
 | `Relational` | structures, induced embeddings, separate enumerations, ordinary embedding big Ramsey degrees |
 | `FullTypes` | full atomic diagrams, evaluation, coordinate and base restriction |
 | `TypeRespecting` | `Prefix`, `TailTuple`, `NTypeRespecting`, `MaximumArity`, `TypeRespecting`; identity/composition/monotonicity |
+| `BinaryFullTypes` | `FullType.futureDiagram`, `FullType.binary_ext`: reconstruct a binary full type from singletons AND its internal future diagram |
+| `FullTypeMaps` | `FullTypeMap`, `id`, `comp`, `onType_injective`, `future_preserved`, `binary_determined_by_one` |
+| `TypeAmalgamation` | `Continuation`, `FutureTuple`, `Approximates`, `TypeRespectingMap`, `ClassTypeRespectingMap`, `ExtendsByLast`, `NTypeRespectingAmalgamation`, `TypeRespectingAmalgamation` |
+| `IrreducibleCover` | relational `Irreducible`, actual induced embeddings, `range_in_one_side`, `Avoids`, `avoids_of_free_cover`; no size bound on the forbidden structure |
 | `MetricInterpolation` | natural-number scalar clipping and `interpolation` |
 | `LatticeInterpolation` | `LatticeAdd`, `clip`, `clip_bounds`, `clip_fixed`, `clip_nonzero`, `clip_nonexpansive`, `clip_pair_bound`, `interpolation`: partially ordered scalar core |
 | `GroupLabelTypes` | compatible profiles, anchor determination, restriction injectivity and covered types |
@@ -29,6 +34,44 @@ entries. The naming of parameters and future vertices is injective in the
 `Prefix`/`TailTuple` application. Big Ramsey degrees count all embeddings.
 Enumerations are not relation symbols; every tuple size at most n is tested.
 The maximum-arity convention is sharp, with value one for the empty language.
+
+## Full-type and continuation interfaces
+
+`FullTypeMap n A B` retains an ordered base embedding and a total action on all
+full types, including types outside any specified class. Its extension law is
+an equivalence of relation values. Coherence is required for every increasing
+coordinate injection, not just initial subtuples. Identity, composition,
+component injectivity and preservation of the whole future diagram are proved.
+In a binary language the one-type component determines every component; this
+uses the extension law and does not discard internal future relations.
+
+A `Continuation A` contains a finite base `A : RelStructure L (Fin a)` as the
+exact initial segment. `mem_prefix` proves that there are no extra vertices in
+that segment. `FutureTuple` lies entirely beyond it and is strictly increasing.
+`future_evaluate_injective` verifies the distinctness and disjointness of all
+names used by `Continuation.typeOf`; realised types are not merely diagrams
+pulled back along a potentially non-injective map.
+
+`Continuation.Approximates` records the base equality, the separation of future
+vertices from the target base, and exact equality with the prescribed image
+of every full type. `TypeRespectingMap` quantifies over unrestricted finite or
+countable continuations. `ClassTypeRespectingMap` adds class-relative witnesses;
+its argument K is evaluated on the finite/countable age closure of a finite
+class. Both predicates and approximation satisfy checked identity and
+composition laws.
+
+`NTypeRespectingAmalgamation` is the manuscript's actual one-new-last-vertex
+lifting property. Its commuting squares are equal on the entire structural
+maps, not just the bases or valid types. One solution map is chosen outside all
+continuation quantifiers. The unqualified predicate uses `MaximumArity.value - 1`.
+These are now concrete definitions, not assumptions that a class satisfies them.
+
+The manuscript proves a direct full-type free-amalgamation theorem with any
+family of forbidden finite irreducibles, and binary invariance under
+quantifier-free definitional expansions. The relational irreducible-cover step
+is checked here; the complete class-level constructions are still written proofs.
+In particular, no finite big Ramsey conclusion for an infinite forbidden family
+is inferred from this amalgamation result.
 
 ## Directed and anchored repair
 
@@ -52,8 +95,8 @@ empty-source amalgamation requests there. Palette 121 is checked to encode
 exactly transitivity of the strict relation on a three-vertex structure.
 
 All finite certificates use ordinary kernel `decide`, not `native_decide`.
-The search generator is not part of the trusted proof. Full relational type maps,
-class-level uniform continuation/TRAP, and the finite-quotient interpretation of
+The search generator is not part of the trusted proof. The full-type-map interfaces are now defined, but their class-level
+construction from the repair criteria and the finite-quotient interpretation of
 the symmetric exception remain written manuscript arguments. In particular, the
 certificate theorem alone is not an end-to-end Lean proof of a class-level result.
 
@@ -204,12 +247,12 @@ poset transitivity. Only standard Lean axioms occur; no `sorryAx` is reported.
 The finite certificate module compiled in 104 seconds. Earlier instance-size and
 evaluation-order failures were repaired without weakening any finite claim.
 
-Next formalize the exact full-type-map and class-relative continuation interfaces
-and connect the checked constraint constructions to them. Exact splits, the
+Next connect the exact full-type-map and class-relative continuation interfaces
+to the checked constraint constructions. Exact splits, the
 maximum-arity reduction and concrete metric endpoint geometry remain to be
 formalized. The general cycles-and-cliques theorem, beyond the stated small-pair
 triangle cases, is not assumed.
 
-The lattice-valued interpolation development is on a separate branch; this change
-does not overwrite it. Internal weak-type comparison material stays out of the
+Lattice-valued interpolation has been integrated; concrete metric endpoint
+instantiations remain to be formalized. Internal weak-type comparison material stays out of the
 public Lean repository. No independently spawned referee report is claimed.
