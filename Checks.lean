@@ -6,3 +6,16 @@ import AllThoseBigRamsey
 #print axioms AllThoseBigRamsey.NTypeRespecting.id
 #print axioms AllThoseBigRamsey.NTypeRespecting.comp
 #print axioms AllThoseBigRamsey.NTypeRespecting.mono
+#print axioms AllThoseBigRamsey.MetricInterpolation.clip_bounds
+#print axioms AllThoseBigRamsey.MetricInterpolation.clip_fixed
+#print axioms AllThoseBigRamsey.MetricInterpolation.clip_pos
+#print axioms AllThoseBigRamsey.MetricInterpolation.clip_lipschitz
+#print axioms AllThoseBigRamsey.MetricInterpolation.clip_sum_lower
+#print axioms AllThoseBigRamsey.MetricInterpolation.interpolation
+#print axioms AllThoseBigRamsey.GroupLabelTypes.eq_of_anchor
+#print axioms AllThoseBigRamsey.GroupLabelTypes.restrict_compatible
+#print axioms AllThoseBigRamsey.GroupLabelTypes.restriction_injective
+#print axioms AllThoseBigRamsey.GroupLabelTypes.typeMap_covers
+#print axioms AllThoseBigRamsey.GroupLabelTypes.same_profile_pair
+#print axioms AllThoseBigRamsey.TwoColourTriangles.classification
+#print axioms AllThoseBigRamsey.TwoColourTriangles.mixed_only_fails
