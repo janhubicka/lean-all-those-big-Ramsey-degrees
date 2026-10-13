@@ -1,0 +1,9 @@
+import AllThoseBigRamsey.CompletionTransport
+
+#print axioms AllThoseBigRamsey.CompletionTransport.PrefixSystem.below_antisymm
+#print axioms AllThoseBigRamsey.CompletionTransport.PrefixSystem.below_trans
+#print axioms AllThoseBigRamsey.CompletionTransport.PrefixSystem.predecessors_comparable
+#print axioms AllThoseBigRamsey.CompletionTransport.CoherentCompletion.below_iff
+#print axioms AllThoseBigRamsey.CompletionTransport.CoherentCompletion.compatible_iff
+#print axioms AllThoseBigRamsey.CompletionTransport.no_common_socle_completion
+#print axioms AllThoseBigRamsey.CompletionTransport.antichain_not_order_reflected_in_chain
