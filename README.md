@@ -20,6 +20,7 @@ for mathematical scope. Lean/Std only. Run `lake build`, then
 | `DirectedTriangleCertificates` | all 128 oriented palettes; 16 small-AP classes; 15 local repairs; anchored repair for palette 37; `no_empty_rule`; `poset_triangle_iff` |
 | `CompletionTransport` | `PrefixSystem` tree-order laws; `CoherentCompletion.below_iff`, `compatible_iff`; `no_common_socle_completion`; `antichain_not_order_reflected_in_chain` |
 | `OneTypeCompletion` | actual full diagrams: `neutral`, `neutral_base`, `neutral_extends`, `complete`, `complete_prescribed`, `complete_extends` |
+| `CanonicalSocle` | ordered finite-solution choice; `Scheme.complete_append_prefix`, `preserves_compatibility`, `decode_complete`, `reflects_prefix_of_faithful`, `visible_independent` |
 
 Full types include internal relations, unary/diagonal information and repeated
 entries. The naming of parameters and future vertices is injective in the
@@ -108,6 +109,32 @@ the image-continuation recognition lemma, the finite no-age test and the
 class-level TRAP theorem remain written proofs. Outside binary free amalgamation,
 the prescribed domain still has to be the image of a known admissible F.
 The generic raw partial-diagram completion claim is not assumed.
+
+## Canonical socle recursion
+
+For locally admissible socle steps, the manuscript constructs a finite,
+nonempty set of TRAP solutions and selects the least by a fixed ordering
+of atomic output tables. This selection is shared by every occurrence
+of a marked socle. The visible composite after the step depends only on
+the prescribed action on the image, not on values chosen outside it.
+
+`CanonicalSocle` formalises the deterministic list recursion and proves
+its prefix and same-socle compatibility preservation; the output agrees
+on common source prefixes. It also proves that the visible composite
+of two maps agreeing on an image is equal. An optional letterwise decoder
+gives prefix reflection. **The decoder is an additional hypothesis**:
+canonical choices alone can collapse distinct E-marked socles.
+The manuscript isolates a finite simultaneous sibling-separation condition
+sufficient for a faithful socle tree embedding and exact meets.
+
+This Lean module does not formalise the local no-age test, the full
+class-level TRAP property, or their construction from arbitrary partial
+diagrams. It remains a separate structural component, not a representation
+of the desired conclusion as an assumption. Commit
+`1f0661ce93b502e11327874452054e5f2fc374ed` passed the full
+build and dependency audits in Actions run `38428150366`;
+the first attempt required correcting the final decoder rewrite.
+No nonstandard axioms or sorry are used.
 
 ## Validation and remaining work
 
