@@ -22,8 +22,9 @@ jobs:
             exit 1
           fi
       - name: Report proof dependencies
-        shell: bash
         run: |
           set -euo pipefail
-          { lake env lean Checks.lean; lake env lean ChecksFullTypes.lean; } | tee axiom-report.txt
-          if grep -q 'sorryAx' axiom-report.txt; then exit 1; fi
+          lake env lean Checks.lean | tee axiom-report.txt
+          lake env lean PartialTypesChecks.lean | tee partial-type-axioms.txt
+          lake env lean ChecksFullTypes.lean | tee full-type-axioms.txt
+          if grep -q 'sorryAx' axiom-report.txt partial-type-axioms.txt full-type-axioms.txt; then exit 1; fi

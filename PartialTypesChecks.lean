@@ -1,0 +1,22 @@
+import AllThoseBigRamsey.CompletionTransport
+import AllThoseBigRamsey.OneTypeCompletion
+import AllThoseBigRamsey.CanonicalSocle
+
+#print axioms AllThoseBigRamsey.CompletionTransport.PrefixSystem.below_antisymm
+#print axioms AllThoseBigRamsey.CompletionTransport.PrefixSystem.below_trans
+#print axioms AllThoseBigRamsey.CompletionTransport.PrefixSystem.predecessors_comparable
+#print axioms AllThoseBigRamsey.CompletionTransport.CoherentCompletion.below_iff
+#print axioms AllThoseBigRamsey.CompletionTransport.CoherentCompletion.compatible_iff
+#print axioms AllThoseBigRamsey.CompletionTransport.no_common_socle_completion
+#print axioms AllThoseBigRamsey.CompletionTransport.antichain_not_order_reflected_in_chain
+#print axioms AllThoseBigRamsey.OneTypeCompletion.neutral_base
+#print axioms AllThoseBigRamsey.OneTypeCompletion.neutral_extends
+#print axioms AllThoseBigRamsey.OneTypeCompletion.complete_prescribed
+#print axioms AllThoseBigRamsey.OneTypeCompletion.complete_extends
+#print axioms AllThoseBigRamsey.CanonicalSocle.FiniteProblem.choose_mem
+#print axioms AllThoseBigRamsey.CanonicalSocle.Scheme.complete_append_prefix
+#print axioms AllThoseBigRamsey.CanonicalSocle.Scheme.state_input
+#print axioms AllThoseBigRamsey.CanonicalSocle.Scheme.preserves_compatibility
+#print axioms AllThoseBigRamsey.CanonicalSocle.Scheme.decode_complete
+#print axioms AllThoseBigRamsey.CanonicalSocle.Scheme.reflects_prefix_of_faithful
+#print axioms AllThoseBigRamsey.CanonicalSocle.visible_independent
