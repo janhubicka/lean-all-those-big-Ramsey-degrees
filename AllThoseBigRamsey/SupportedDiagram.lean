@@ -16,16 +16,14 @@ namespace AllThoseBigRamsey.SupportedDiagram
 
 open SupportClosed
 
-universe u v
-
 /-- On supported tuples both truth and falsity are prescribed. -/
-structure Partial (L : Language) (α : Type u) where
+structure Partial (L : Language) (α : Type) where
   mark : α → α → Prop
   value : (R : L.Symbol) → (q : Fin (L.arity R) → α) →
     PairMarked mark q → Prop
 
 namespace Partial
-variable {L : Language} {α : Type u} {β : Type v}
+variable {L : Language} {α β : Type}
 
 /-- Every atom outside the supported region is set to false. -/
 def neutral (P : Partial L α) : RelStructure L α where
