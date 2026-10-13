@@ -29,3 +29,8 @@ import AllThoseBigRamsey.CanonicalSocle
 #print axioms AllThoseBigRamsey.SupportClosed.neutralise_unique
 #print axioms AllThoseBigRamsey.SupportClosed.neutralise_restrict
 #print axioms AllThoseBigRamsey.SupportClosed.neutralise_fixed
+
+import AllThoseBigRamsey.ZeroTypePosetObstruction
+#print axioms AllThoseBigRamsey.ZeroTypePosetObstruction.basePrime_valid
+#print axioms AllThoseBigRamsey.ZeroTypePosetObstruction.continuation_valid
+#print axioms AllThoseBigRamsey.ZeroTypePosetObstruction.no_amalgam_of_poset_and_E
