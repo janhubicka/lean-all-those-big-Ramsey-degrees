@@ -128,6 +128,12 @@ that same map embeds F into the original structure. All negative and
 repeated-coordinate atomic information is treated by induced embeddings.
 The module also proves neutralisation uniqueness when supported diagrams
 agree, and commutation with restrictions under injective maps.
+The complete Lean build and both dependency reports passed at commit
+`1fdc9e4093f517d9d8144457b669f0d54a36d883` in Actions run
+`38434221232` (no `sorryAx`; standard Lean axioms only). The first CI
+attempt built the module but the independent check file lacked its explicit
+import; the import was added without modifying the theorem statements.
+
 
 The intended application is canonical nodewise completion of individually
 completable E-supported partial types in free amalgamation classes,
