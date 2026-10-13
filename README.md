@@ -2,7 +2,7 @@
 
 Companion to `janhubicka/All-those-big-Ramsey-degrees`, which is authoritative
 for mathematical scope. Lean/Std only. Run `lake build`, then
-`lake env lean Checks.lean`.
+`lake env lean Checks.lean` and `lake env lean PartialTypesChecks.lean`.
 
 ## Interface index
 
@@ -18,6 +18,7 @@ for mathematical scope. Lean/Std only. Run `lake build`, then
 | `ThreeColourCertificates` | symmetric repair, obstruction, relabelling and exhaustive classification certificates |
 | `DirectedTriangleRepair` | oriented triangle convention; `LocalLaws`, `AnchoredLaws`, `Problem.step_preserves_at`, `Problem.uniform_choice` |
 | `DirectedTriangleCertificates` | all 128 oriented palettes; 16 small-AP classes; 15 local repairs; anchored repair for palette 37; `no_empty_rule`; `poset_triangle_iff` |
+| `CompletionTransport` | `PrefixSystem` tree-order laws; `CoherentCompletion.below_iff`, `compatible_iff`; `no_common_socle_completion`; `antichain_not_order_reflected_in_chain` |
 
 Full types include internal relations, unary/diagonal information and repeated
 entries. The naming of parameters and future vertices is injective in the
@@ -51,6 +52,24 @@ The search generator is not part of the trusted proof. Full relational type maps
 class-level uniform continuation/TRAP, and the finite-quotient interpretation of
 the symmetric exception remain written manuscript arguments. In particular, the
 certificate theorem alone is not an end-to-end Lean proof of a class-level result.
+
+## Partial types and coherent completion
+
+The companion section distinguishes literal successor E-marked types from
+partial diagrams with undetermined relations. Individual completability does
+not imply a common-socle completion, even for two-distance ultrametrics.
+The Boolean certificate `no_common_socle_completion` verifies the finite
+obstruction. The class's TRAP proof remains a written mathematical argument.
+
+`CoherentCompletion` records a map commuting with prefixes, a strictly increasing
+level map, an erasure left inverse, and an independent map on socles with its
+own erasure. The order and compatibility equivalences are derived, not fields
+of the interface. `PrefixSystem` also proves reflexivity, antisymmetry,
+transitivity and comparability of predecessors. These are useful structural
+consequences of canonical insertion; constructing this interface from concrete
+relational full-type maps and TRAP is NOT formalized here. Meet preservation,
+arbitrary subtuple restriction and the locally finite iteration remain written
+proofs. The new module is submitted for CI; no local Lean check is claimed.
 
 ## Validation and remaining work
 
