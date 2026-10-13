@@ -1,3 +1,4 @@
+import AllThoseBigRamsey.SupportedDiagram
 import AllThoseBigRamsey.SupportClosed
 import AllThoseBigRamsey.CompletionTransport
 import AllThoseBigRamsey.OneTypeCompletion
@@ -29,3 +30,8 @@ import AllThoseBigRamsey.CanonicalSocle
 #print axioms AllThoseBigRamsey.SupportClosed.neutralise_unique
 #print axioms AllThoseBigRamsey.SupportClosed.neutralise_restrict
 #print axioms AllThoseBigRamsey.SupportClosed.neutralise_fixed
+
+#print axioms AllThoseBigRamsey.SupportedDiagram.Partial.neutral_extends
+#print axioms AllThoseBigRamsey.SupportedDiagram.Partial.neutral_equiv_neutralise
+#print axioms AllThoseBigRamsey.SupportedDiagram.Partial.neutral_omits_irreducible
+#print axioms AllThoseBigRamsey.SupportedDiagram.Partial.neutral_restrict
