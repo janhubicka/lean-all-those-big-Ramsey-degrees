@@ -1,5 +1,4 @@
 import Std
-import Std.Tactic.Omega
 
 /-!
 # The finite obstruction to prefix TRAP for successor-marked posets
