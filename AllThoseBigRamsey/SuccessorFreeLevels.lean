@@ -1,4 +1,5 @@
 import Std
+import Std.Tactic.Omega
 
 /-!
 # The successor free-level marker and its one-level insertion
@@ -53,10 +54,8 @@ theorem adjust_le_iff (m a b : Nat) :
 
 theorem adjust_min (m a b : Nat) :
     adjust m (min a b) = min (adjust m a) (adjust m b) := by
-  by_cases hab : a ≤ b
-  · simp only [min_eq_left hab, min_eq_left ((adjust_le_iff m a b).mpr hab)]
-  · have hba : b ≤ a := by omega
-    simp only [min_eq_right hba, min_eq_right ((adjust_le_iff m b a).mpr hba)]
+  unfold adjust shift
+  split_ifs <;> omega
 
 theorem insert_on_shift (m k : Nat) (free : Nat → Nat) (j : Nat)
     (hj : m ≤ j) :
@@ -67,8 +66,8 @@ theorem insert_on_shift (m k : Nat) (free : Nat → Nat) (j : Nat)
   have h₂ : j+1 ≠ m := by omega
   simp [h₁, h₂]
   by_cases ht : free j < m
-  · simp [ht]
-  · simp [ht]
+  · simp [shift, ht]
+  · simp [shift, ht]
 
 theorem insert_spaced {free : Nat → Nat} (hf : Spaced free)
     {m k : Nat} (hm : 0 < m) (hk : k < m) :
@@ -134,7 +133,8 @@ theorem example_spaced : Spaced exampleFree := by
     unfold exampleFree
     split_ifs <;> omega
 
-theorem example_edge : Marked exampleFree 0 2 := by decide
+theorem example_edge : Marked exampleFree 0 2 := by
+  simp [Marked, exampleFree]
 
 theorem example_relabel_not_spaced :
     ¬ Spaced (fun j => if j=1 then exampleFree 2 else 0) := by
