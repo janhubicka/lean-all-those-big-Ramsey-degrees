@@ -1,3 +1,4 @@
+import AllThoseBigRamsey.MarkedFreeTransfer
 import AllThoseBigRamsey.BinaryFullTypes
 import AllThoseBigRamsey.FullTypeMaps
 import AllThoseBigRamsey.TypeAmalgamation
@@ -22,6 +23,5 @@ import AllThoseBigRamsey.IrreducibleCover
 #check AllThoseBigRamsey.NTypeRespectingAmalgamation
 #check AllThoseBigRamsey.TypeRespectingAmalgamation
 
-import AllThoseBigRamsey.MarkedFreeTransfer
 #print axioms AllThoseBigRamsey.MarkedFreeTransfer.forbidden_future_is_prescribed
 #print axioms AllThoseBigRamsey.MarkedFreeTransfer.guarded_of_no_positive_off_image
