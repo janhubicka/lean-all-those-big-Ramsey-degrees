@@ -1,5 +1,4 @@
 import AllThoseBigRamsey.Relational
-import Std.Tactic.Omega
 
 /-!
 # Matching closure and closed-block embeddings
