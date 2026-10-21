@@ -19,4 +19,5 @@ import AllThoseBigRamsey.CanonicalSocle
 import AllThoseBigRamsey.SupportClosed
 import AllThoseBigRamsey.ZeroTypePosetObstruction
 import AllThoseBigRamsey.MarkedFreeTransfer
+import AllThoseBigRamsey.TwoGraphParity
 import AllThoseBigRamsey.ClosedMatching
