@@ -18,6 +18,7 @@ for mathematical scope. Lean/Std only. Run `lake build`, then
 | `TypeAmalgamation` | `Continuation`, `FutureTuple`, `Approximates`, `TypeRespectingMap`, `ClassTypeRespectingMap`, `ExtendsByLast`, `NTypeRespectingAmalgamation`, `TypeRespectingAmalgamation` |
 | `IrreducibleCover` | relational `Irreducible`, actual induced embeddings, `range_in_one_side`, `Avoids`, `avoids_of_free_cover`; no size bound on the forbidden structure |
 | `TwoGraphParity` | `triangle`, `xor4`, `four_point_even`, `forced_fourth`, `rooted_insert`, `unique_mixed`, `rooted_base_atom`: kernel-checked binary parity identities |
+| `ClosedMatching` | `mate`, `Edge`, `Closed`, `closure`, `BlockEmbedding`, `closure_natural`, `appendBlock`, `append_disjoint` |
 | `MarkedFreeTransfer` | `GuardedAt`, `forbidden_future_is_prescribed`, `guarded_of_no_positive_off_image`: irreducible-copy obstruction for the binary free-marked TRAP construction |
 | `MetricInterpolation` | natural-number scalar clipping and `interpolation` |
 | `LatticeInterpolation` | `LatticeAdd`, `clip`, `clip_bounds`, `clip_fixed`, `clip_nonzero`, `clip_nonexpansive`, `clip_pair_bound`, `interpolation`: partially ordered scalar core |
@@ -309,6 +310,30 @@ continuation quantifiers, nor of the arbitrary-arity
 hypergraph generalisation. In particular this is no proof
 of the proposed converse between closure-relative TRAP
 failure and infinite big Ramsey degrees.
+
+## Algebraicity and closure-relative block types
+
+The matching-age example must not be used to refute closure-relative
+TRAP: it fails the *unclosed* one-vertex TRAP because a base singleton
+does not contain its unique mate. In the ordinary matching limit, the
+finite closed subsets are unions of full two-vertex edges, and a
+minimal nonempty closed extension adds a whole edge block.
+
+`ClosedMatching` represents a finite closed matching by `Fin n × Bool`,
+defines the mate involution, graph adjacency and the closure obtained
+by adding partners, and proves closure preservation under embeddings
+induced by injections of blocks. It also verifies that a singleton
+vertex set is not closed, and that the newly appended block is
+disjoint from every old block.
+
+These are structural lemmas for the *closed age* of the matching
+limit, not a class-level formalization of the new
+closure-relative TRAP definition. The manuscript proves the
+canonical block insertion: every valid type of k new complete
+blocks over a closed base is a disjoint union of edges. General
+Hrushovski strong/d-closed type interfaces require generated
+closure restrictions, not vertex-only one-types. They are not
+provided by this toy model.
 
 ## Validation and remaining work
 
