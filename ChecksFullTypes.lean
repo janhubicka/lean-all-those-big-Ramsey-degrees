@@ -1,3 +1,4 @@
+import AllThoseBigRamsey.TwoGraphParity
 import AllThoseBigRamsey.MarkedFreeTransfer
 import AllThoseBigRamsey.BinaryFullTypes
 import AllThoseBigRamsey.FullTypeMaps
@@ -25,3 +26,9 @@ import AllThoseBigRamsey.IrreducibleCover
 
 #print axioms AllThoseBigRamsey.MarkedFreeTransfer.forbidden_future_is_prescribed
 #print axioms AllThoseBigRamsey.MarkedFreeTransfer.guarded_of_no_positive_off_image
+
+#print axioms AllThoseBigRamsey.TwoGraphParity.four_point_even
+#print axioms AllThoseBigRamsey.TwoGraphParity.forced_fourth
+#print axioms AllThoseBigRamsey.TwoGraphParity.rooted_insert
+#print axioms AllThoseBigRamsey.TwoGraphParity.unique_mixed
+#print axioms AllThoseBigRamsey.TwoGraphParity.rooted_base_atom
