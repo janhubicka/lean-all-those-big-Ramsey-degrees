@@ -98,7 +98,8 @@ theorem edge_iff (f : BlockEmbedding m n) (u v : Vertex m) :
   change f.vertexMap v = mate (f.vertexMap u) ↔ v = mate u
   rw [← f.map_mate u]
   constructor
-  · exact f.vertexMap_injective
+  · intro h
+    exact f.vertexMap_injective h
   · intro h
     exact congrArg f.vertexMap h
 
@@ -128,7 +129,7 @@ theorem closure_natural (f : BlockEmbedding m n)
   · intro h
     rcases h with ⟨u, hu, huv⟩ | ⟨u, hu, huv⟩
     · exact ⟨u, Or.inl hu, huv⟩
-    · refine ⟨mate u, Or.inr hu, ?_⟩
+    · refine ⟨mate u, Or.inr (by simpa only [mate_mate] using hu), ?_⟩
       calc
         f.vertexMap (mate u) = mate (f.vertexMap u) := f.map_mate u
         _ = mate (mate v) := congrArg mate huv
@@ -148,7 +149,7 @@ def graph (n : Nat) : RelStructure language (Vertex n) where
   rel := by
     intro R q
     cases R
-    exact Edge (q 0) (q 1)
+    exact Edge (q ⟨0, by decide⟩) (q ⟨1, by decide⟩)
 
 def BlockEmbedding.toGraphEmbedding {m n : Nat} (f : BlockEmbedding m n) :
     Embedding (graph m) (graph n) where
@@ -159,13 +160,16 @@ def BlockEmbedding.toGraphEmbedding {m n : Nat} (f : BlockEmbedding m n) :
   map_rel := by
     intro R q
     cases R
-    exact (f.edge_iff (q 0) (q 1)).symm
+    exact (f.edge_iff (q ⟨0, by decide⟩) (q ⟨1, by decide⟩)).symm
 
 def appendBlock (m : Nat) : BlockEmbedding m (m+1) where
   block := Fin.castSucc
   block_injective := by
     intro i j h
-    exact Fin.ext (congrArg Fin.val h)
+    apply Fin.ext
+    have hs : (i.castSucc : Fin (m+1)).val =
+        (j.castSucc : Fin (m+1)).val := congrArg Fin.val h
+    simpa using hs
 
 def lastBlock (m : Nat) (b : Bool) : Vertex (m+1) := (Fin.last m, b)
 
