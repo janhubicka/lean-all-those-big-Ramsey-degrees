@@ -1,3 +1,4 @@
+import AllThoseBigRamsey.ClosedMatching
 import AllThoseBigRamsey.TwoGraphParity
 import AllThoseBigRamsey.MarkedFreeTransfer
 import AllThoseBigRamsey.BinaryFullTypes
@@ -32,3 +33,12 @@ import AllThoseBigRamsey.IrreducibleCover
 #print axioms AllThoseBigRamsey.TwoGraphParity.rooted_insert
 #print axioms AllThoseBigRamsey.TwoGraphParity.unique_mixed
 #print axioms AllThoseBigRamsey.TwoGraphParity.rooted_base_atom
+
+#print axioms AllThoseBigRamsey.ClosedMatching.mate_mate
+#print axioms AllThoseBigRamsey.ClosedMatching.closure_closed
+#print axioms AllThoseBigRamsey.ClosedMatching.closure_eq_of_closed
+#print axioms AllThoseBigRamsey.ClosedMatching.singleton_not_closed
+#print axioms AllThoseBigRamsey.ClosedMatching.BlockEmbedding.edge_iff
+#print axioms AllThoseBigRamsey.ClosedMatching.BlockEmbedding.closure_natural
+#print axioms AllThoseBigRamsey.ClosedMatching.BlockEmbedding.toGraphEmbedding
+#print axioms AllThoseBigRamsey.ClosedMatching.append_disjoint
