@@ -17,6 +17,7 @@ for mathematical scope. Lean/Std only. Run `lake build`, then
 | `FullTypeMaps` | `FullTypeMap`, `id`, `comp`, `onType_injective`, `future_preserved`, `binary_determined_by_one` |
 | `TypeAmalgamation` | `Continuation`, `FutureTuple`, `Approximates`, `TypeRespectingMap`, `ClassTypeRespectingMap`, `ExtendsByLast`, `NTypeRespectingAmalgamation`, `TypeRespectingAmalgamation` |
 | `IrreducibleCover` | relational `Irreducible`, actual induced embeddings, `range_in_one_side`, `Avoids`, `avoids_of_free_cover`; no size bound on the forbidden structure |
+| `TwoGraphParity` | `triangle`, `xor4`, `four_point_even`, `forced_fourth`, `rooted_insert`, `unique_mixed`, `rooted_base_atom`: kernel-checked binary parity identities |
 | `MarkedFreeTransfer` | `GuardedAt`, `forbidden_future_is_prescribed`, `guarded_of_no_positive_off_image`: irreducible-copy obstruction for the binary free-marked TRAP construction |
 | `MetricInterpolation` | natural-number scalar clipping and `interpolation` |
 | `LatticeInterpolation` | `LatticeAdd`, `clip`, `clip_bounds`, `clip_fixed`, `clip_nonzero`, `clip_nonexpansive`, `clip_pair_bound`, `interpolation`: partially ordered scalar core |
@@ -285,6 +286,29 @@ The finite witnesses require no axioms, while
 `no_amalgam_of_poset_and_E` uses only standard
 `propext` and `Quot.sound`; no `sorryAx` occurs.
 No independently spawned referee has signed off.
+
+## Even-parity hypergraphs and finite-degree control cases
+
+The companion manuscript proves full TRAP for the homogeneous
+two-graph (symmetric ternary relation, even parity on each
+four-set). It further extends the same rooted argument to
+even-parity r-uniform hypergraphs for each r>=3. These are
+non-free strong-amalgamation classes with finite big Ramsey
+degrees, since they are quantifier-free reducts of generic
+(r-1)-uniform hypergraphs.
+
+`TwoGraphParity` proves the Boolean four-point identity and
+the unique forced new ternary value from three rooted bits.
+All five endpoints are kernel checked; Actions run 39693476019
+successfully built the entire library and reported proof
+dependencies without sorryAx.
+
+**Scope:** the Lean module is a constraint/repair identity,
+not a full formalisation of the class-level type map and
+continuation quantifiers, nor of the arbitrary-arity
+hypergraph generalisation. In particular this is no proof
+of the proposed converse between closure-relative TRAP
+failure and infinite big Ramsey degrees.
 
 ## Validation and remaining work
 
