@@ -1,3 +1,4 @@
+import AllThoseBigRamsey.ClosedMatching
 import AllThoseBigRamsey.MarkedFreeTransfer
 import AllThoseBigRamsey.BinaryFullTypes
 import AllThoseBigRamsey.FullTypeMaps
@@ -25,3 +26,12 @@ import AllThoseBigRamsey.IrreducibleCover
 
 #print axioms AllThoseBigRamsey.MarkedFreeTransfer.forbidden_future_is_prescribed
 #print axioms AllThoseBigRamsey.MarkedFreeTransfer.guarded_of_no_positive_off_image
+
+#print axioms AllThoseBigRamsey.ClosedMatching.mate_mate
+#print axioms AllThoseBigRamsey.ClosedMatching.closure_closed
+#print axioms AllThoseBigRamsey.ClosedMatching.closure_eq_of_closed
+#print axioms AllThoseBigRamsey.ClosedMatching.singleton_not_closed
+#print axioms AllThoseBigRamsey.ClosedMatching.BlockEmbedding.edge_iff
+#print axioms AllThoseBigRamsey.ClosedMatching.BlockEmbedding.closure_natural
+#print axioms AllThoseBigRamsey.ClosedMatching.BlockEmbedding.toGraphEmbedding
+#print axioms AllThoseBigRamsey.ClosedMatching.append_disjoint
