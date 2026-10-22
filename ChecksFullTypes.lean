@@ -1,3 +1,4 @@
+import AllThoseBigRamsey.C0CrossEdges
 import AllThoseBigRamsey.NonUnaryClosure
 import AllThoseBigRamsey.UnaryClosedUnion
 import AllThoseBigRamsey.MinimalBlockAge
@@ -68,3 +69,8 @@ import AllThoseBigRamsey.IrreducibleCover
 #print axioms AllThoseBigRamsey.NonUnaryClosure.axisX_closed
 #print axioms AllThoseBigRamsey.NonUnaryClosure.axisY_closed
 #print axioms AllThoseBigRamsey.NonUnaryClosure.union_axes_not_closed
+
+#print axioms AllThoseBigRamsey.C0CrossEdges.delta_disjoint_union
+#print axioms AllThoseBigRamsey.C0CrossEdges.cross_bound
+#print axioms AllThoseBigRamsey.C0CrossEdges.zero_block_no_cross_edges
+#print axioms AllThoseBigRamsey.C0CrossEdges.singleton_delta_two
