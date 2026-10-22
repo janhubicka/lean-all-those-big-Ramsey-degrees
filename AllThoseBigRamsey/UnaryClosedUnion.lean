@@ -87,4 +87,65 @@ theorem minimal_blocks_no_shared_new_vertex
   rw [hi] at hpair
   exact hpair
 
+/-- A minimal absolute closed set has no nonempty proper closed subset. -/
+def MinimalAbsolute (f : UnaryValues α) (A : α → Prop) : Prop :=
+  Closed f A ∧ (∃ x, A x) ∧
+    ∀ D, Closed f D → (∀ x, D x → A x) →
+      (∃ x, D x) → D = A
+
+/-- A minimal absolute closed block, disjoint from a closed base,
+remains a minimal closed extension when joined to that base.
+This is an essential unary-closure step for varying parameters. -/
+theorem minimal_absolute_union
+    (f : UnaryValues α)
+    {B A : α → Prop}
+    (hB : Closed f B)
+    (hA : MinimalAbsolute f A)
+    (hdisjoint : ∀ x, B x → ¬ A x) :
+    MinimalClosedBlocks.MinimalOver (Closed f) B (Union B A) := by
+  classical
+  refine {
+    base_subset := ?_
+    proper := ?_
+    closed := union_closed f hB hA.1
+    minimal := ?_ }
+  · intro x hx
+    exact Or.inl hx
+  · intro h
+    rcases hA.2.1 with ⟨x, hx⟩
+    exact hdisjoint x (h x (Or.inr hx)) hx
+  · intro D hD hBD hDC
+    by_cases hDB : MinimalClosedBlocks.Subset D B
+    · left
+      funext x
+      apply propext
+      exact ⟨hDB x, hBD x⟩
+    · right
+      have hextra : ∃ x, D x ∧ ¬ B x := by
+        by_contra hno
+        apply hDB
+        intro x hx
+        by_cases hb : B x
+        · exact hb
+        · exact False.elim (hno ⟨x, hx, hb⟩)
+      obtain ⟨x, hxD, hxnotB⟩ := hextra
+      have hxA : A x := (hDC x hxD).resolve_left hxnotB
+      have hI : (fun z => D z ∧ A z) = A :=
+        hA.2.2 _ (inter_closed f hD hA.1)
+          (fun _ h => h.2) ⟨x, hxD, hxA⟩
+      have hAD : ∀ y, A y → D y := by
+        intro y hy
+        have hh : (fun z => D z ∧ A z) y := by
+          rw [hI]
+          exact hy
+        exact hh.1
+      funext y
+      apply propext
+      constructor
+      · exact hDC y
+      · intro h
+        rcases h with hb | ha
+        · exact hBD y hb
+        · exact hAD y ha
+
 end AllThoseBigRamsey.UnaryClosedUnion
