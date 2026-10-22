@@ -1,3 +1,4 @@
+import AllThoseBigRamsey.MinimalBlockAge
 import AllThoseBigRamsey.MinimalClosedBlocks
 import AllThoseBigRamsey.ClosedCopyPersistence
 import AllThoseBigRamsey.ClosedMatching
@@ -50,3 +51,6 @@ import AllThoseBigRamsey.IrreducibleCover
 
 #print axioms AllThoseBigRamsey.MinimalClosedBlocks.distinct_minimal_intersection
 #print axioms AllThoseBigRamsey.MinimalClosedBlocks.distinct_minimal_overlap_only_base
+
+#print axioms AllThoseBigRamsey.MinimalBlockAge.ageIndivisible_of_vertexRamsey
+#print axioms AllThoseBigRamsey.MinimalBlockAge.last_part_full_age_of_vertexRamsey
