@@ -21,6 +21,11 @@ for mathematical scope. Lean/Std only. Run `lake build`, then
 | `ClosedMatching` | `mate`, `Edge`, `Closed`, `closure`, `BlockEmbedding`, `closure_natural`, `appendBlock`, `append_disjoint` |
 | `ClosedCopyPersistence` | `part`, `AgeIndivisible`, `last_part_full_age`, `no_full_age_bad_colour`: checked finite partition extraction |
 | `MinimalClosedBlocks` | `MinimalOver`, `distinct_minimal_intersection`, `distinct_minimal_overlap_only_base`: minimal closed increments cannot overlap outside a common closed base |
+| `MinimalBlockAge` | `ageIndivisible_of_vertexRamsey`, `last_part_full_age_of_vertexRamsey`: finite Ramsey plus joint embedding implies age indivisibility |
+| `UnaryClosedUnion` | `union_closed`, `inter_closed`, `bigUnion_closed`, `minimal_absolute_union`: unary-closed union and root-block minimality |
+| `NonUnaryClosure` | `axisX_closed`, `axisY_closed`, `union_axes_not_closed`: binary-addition closure counterexample |
+| `C0CrossEdges` | `delta_disjoint_union`, `cross_bound`, `zero_block_no_cross_edges`: C0 predimension arithmetic |
+| `C0BackedgeClosed` | `Presentation`, `no_cross_exclusive`, `disjoint_closed_no_edge`, `union_edges_in_one_side`, `union_closed`: back-edge closure prevents graph edges across exclusive closed parts |
 | `MarkedFreeTransfer` | `GuardedAt`, `forbidden_future_is_prescribed`, `guarded_of_no_positive_off_image`: irreducible-copy obstruction for the binary free-marked TRAP construction |
 | `MetricInterpolation` | natural-number scalar clipping and `interpolation` |
 | `LatticeInterpolation` | `LatticeAdd`, `clip`, `clip_bounds`, `clip_fixed`, `clip_nonzero`, `clip_nonexpansive`, `clip_pair_bound`, `interpolation`: partially ordered scalar core |
@@ -390,6 +395,62 @@ were checked earlier at `39732883306`. These are
 structural results; the full closed-copy persistence proof
 is still a manuscript theorem, not a kernel-checked
 construction of parameter-minimizing colourings.
+
+## Minimal unary-closed blocks and C0 back-edge closure
+
+The companion manuscript proves age indivisibility for all copies
+of a fixed minimal closed extension B<=C in a finite relational
+free-amalgamation age with locally finite unary set-valued
+closure. The proof encodes each full increment as one vertex
+of a finite relational free-amalgamation class and uses the
+published ordered free-amalgamation Ramsey theorem.
+`MinimalBlockAge` checks the abstract finite
+vertex-Ramsey/joint-embedding -> age-indivisibility step;
+`UnaryClosedUnion` checks closure of finite and arbitrary
+unions and the preservation of minimality when a minimal
+absolute closed block is adjoined to a disjoint closed base.
+
+There is a stronger **C0-specific** result. In the closure-component
+presentation, the unary closure of a vertex includes its
+entire component and every earlier endpoint of a back edge.
+`C0BackedgeClosed` proves under exactly these hypotheses
+that an edge cannot connect A\\B to B\\A for two closed sets.
+Their union is therefore a free graph amalgam over
+their intersection (with unary function values already closed).
+For a fixed closed B and minimal extension C, the complete
+configuration of k distinct copies of C over B is uniquely
+their free union. Thus the corresponding age-indivisibility
+proof reduces to infinite pigeonhole.
+
+**New manuscript width theorem:** for any finite closed A, the
+configuration age of a closed A-type over a finite closed B
+depends only on the marked closed intersection A∩B.
+Consequently at most 2^|A| distinct realization ages occur
+over all closed parameter bases, conditional on the concrete
+D'_0 functional free-amalgamation and limit identification.
+This full Fraisse reconstruction is a **written proof**,
+not yet instantiated in Lean. The C0 no-cross statement
+is kernel-checked as a structural implication of the
+explicit component closure axioms, not as an instantiated
+theorem about the current Big Hrushovski generic.
+
+`C0CrossEdges` separately checks the arithmetic identity
+δ(A∪B)=δ(A)+δ(B)-e(A,B) and the bound
+e(A,B)<=min(δ(A),δ(B)) for disjoint strong sets.
+`NonUnaryClosure` gives the exact finite counterexample
+showing why unions of closed sets fail for binary-input
+closure (two one-dimensional subspaces of F_2^2).
+
+Verification checkpoints: the general Ramsey-to-age lemma
+passed at run `39741663612`; unary minimality passed
+`39743700930`; the unary-vs-binary input boundary
+passed `39743946424`; C0 predimension arithmetic
+passed `39787217590`; and C0 back-edge no-cross
+passed `39789417330`. Each is a full library build
+with standard axiom dependency reports and no sorryAx.
+The companion manuscript and external Big Hrushovski
+limit identification still require independent referee
+validation.
 
 ## Validation and remaining work
 
