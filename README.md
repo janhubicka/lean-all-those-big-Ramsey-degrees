@@ -20,6 +20,7 @@ for mathematical scope. Lean/Std only. Run `lake build`, then
 | `TwoGraphParity` | `triangle`, `xor4`, `four_point_even`, `forced_fourth`, `rooted_insert`, `unique_mixed`, `rooted_base_atom`: kernel-checked binary parity identities |
 | `ClosedMatching` | `mate`, `Edge`, `Closed`, `closure`, `BlockEmbedding`, `closure_natural`, `appendBlock`, `append_disjoint` |
 | `ClosedCopyPersistence` | `part`, `AgeIndivisible`, `last_part_full_age`, `no_full_age_bad_colour`: checked finite partition extraction |
+| `MinimalClosedBlocks` | `MinimalOver`, `distinct_minimal_intersection`, `distinct_minimal_overlap_only_base`: minimal closed increments cannot overlap outside a common closed base |
 | `MarkedFreeTransfer` | `GuardedAt`, `forbidden_future_is_prescribed`, `guarded_of_no_positive_off_image`: irreducible-copy obstruction for the binary free-marked TRAP construction |
 | `MetricInterpolation` | natural-number scalar clipping and `interpolation` |
 | `LatticeInterpolation` | `LatticeAdd`, `clip`, `clip_bounds`, `clip_fixed`, `clip_nonzero`, `clip_nonexpansive`, `clip_pair_bound`, `interpolation`: partially ordered scalar core |
@@ -364,6 +365,31 @@ so neither colour realizes all finite copy configurations.
 The manuscript checks two explicit missing configurations.
 Therefore age indivisibility of arbitrary closed-block families
 cannot be inferred solely from free amalgamation.
+
+## Distinct minimal closed blocks
+
+`MinimalClosedBlocks` works abstractly with a predicate of closed
+substructures stable under intersections. It proves that two
+different minimal closed extensions of the same base intersect
+exactly in the base. The new increments are disjoint, matching
+the minimal strong-block construction in Big Hrushovski C0
+and the strict d-closed blocks in CF.
+
+This does not imply that the closed hull of *several* blocks is
+their union. It also does not imply age indivisibility of
+arbitrary finite closed-copy families. In the manuscript the
+random graph's three-vertex-path copies give an explicit
+counterexample to the latter property, even with trivial closure.
+
+The complete library build and both proof-dependency audits passed
+at `f5162b77af4595bc0193013dc59c5eedd01fd660`,
+Actions run `39733743888`. The two minimal-block
+intersection theorems require no nonstandard axioms.
+The accompanying closed-copy colour-partition lemmas
+were checked earlier at `39732883306`. These are
+structural results; the full closed-copy persistence proof
+is still a manuscript theorem, not a kernel-checked
+construction of parameter-minimizing colourings.
 
 ## Validation and remaining work
 
