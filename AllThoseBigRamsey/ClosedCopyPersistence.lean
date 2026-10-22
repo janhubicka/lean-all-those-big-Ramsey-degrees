@@ -72,14 +72,15 @@ theorem no_full_age_bad_colour
     (i : Fin (n+1))
     (hi : ∀ D, Occurs Y D ↔ Occurs (part Y colour i) D) :
     i = Fin.last n := by
-  by_contra hlast
-  have hne : i.val ≠ n := by
-    intro hv
-    exact hlast (Fin.ext hv)
-  have ilt : i.val < n := by omega
-  let j : Fin n := ⟨i.val, ilt⟩
-  have he : j.castSucc = i := Fin.ext rfl
-  obtain ⟨D, hD, hno⟩ := hbad j
-  exact hno (by simpa only [he] using (hi D).mp hD)
+  by_cases hlast : i = Fin.last n
+  · exact hlast
+  · have hne : i.val ≠ n := by
+      intro hv
+      exact hlast (Fin.ext hv)
+    have ilt : i.val < n := by omega
+    let j : Fin n := ⟨i.val, ilt⟩
+    have he : j.castSucc = i := Fin.ext rfl
+    obtain ⟨D, hD, hno⟩ := hbad j
+    exact False.elim (hno (by simpa only [he] using (hi D).mp hD))
 
 end AllThoseBigRamsey.ClosedCopyPersistence
