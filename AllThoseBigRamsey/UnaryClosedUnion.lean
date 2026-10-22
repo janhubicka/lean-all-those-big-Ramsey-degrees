@@ -122,12 +122,14 @@ theorem minimal_absolute_union
       exact ⟨hDB x, hBD x⟩
     · right
       have hextra : ∃ x, D x ∧ ¬ B x := by
-        by_contra hno
-        apply hDB
-        intro x hx
-        by_cases hb : B x
-        · exact hb
-        · exact False.elim (hno ⟨x, hx, hb⟩)
+        by_cases hExists : ∃ x, D x ∧ ¬ B x
+        · exact hExists
+        · have hDB' : MinimalClosedBlocks.Subset D B := by
+            intro x hx
+            by_cases hb : B x
+            · exact hb
+            · exact False.elim (hExists ⟨x, hx, hb⟩)
+          exact False.elim (hDB hDB')
       obtain ⟨x, hxD, hxnotB⟩ := hextra
       have hxA : A x := (hDC x hxD).resolve_left hxnotB
       have hI : (fun z => D z ∧ A z) = A :=
