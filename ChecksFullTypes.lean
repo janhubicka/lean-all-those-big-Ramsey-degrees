@@ -1,3 +1,4 @@
+import AllThoseBigRamsey.UnaryClosedUnion
 import AllThoseBigRamsey.MinimalBlockAge
 import AllThoseBigRamsey.MinimalClosedBlocks
 import AllThoseBigRamsey.ClosedCopyPersistence
@@ -54,3 +55,9 @@ import AllThoseBigRamsey.IrreducibleCover
 
 #print axioms AllThoseBigRamsey.MinimalBlockAge.ageIndivisible_of_vertexRamsey
 #print axioms AllThoseBigRamsey.MinimalBlockAge.last_part_full_age_of_vertexRamsey
+
+#print axioms AllThoseBigRamsey.UnaryClosedUnion.union_closed
+#print axioms AllThoseBigRamsey.UnaryClosedUnion.inter_closed
+#print axioms AllThoseBigRamsey.UnaryClosedUnion.bigUnion_closed
+#print axioms AllThoseBigRamsey.UnaryClosedUnion.minimal_blocks_intersect_in_base
+#print axioms AllThoseBigRamsey.UnaryClosedUnion.minimal_blocks_no_shared_new_vertex
