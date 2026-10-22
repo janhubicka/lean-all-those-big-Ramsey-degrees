@@ -37,6 +37,7 @@ for mathematical scope. Lean/Std only. Run `lake build`, then
 | `DirectedTriangleCertificates` | all 128 oriented palettes; 16 small-AP classes; 15 local repairs; anchored repair for palette 37; `no_empty_rule`; `poset_triangle_iff` |
 | `CompletionTransport` | `PrefixSystem` tree-order laws; `CoherentCompletion.below_iff`, `compatible_iff`; `no_common_socle_completion`; `antichain_not_order_reflected_in_chain` |
 | `OneTypeCompletion` | actual full diagrams: `neutral`, `neutral_base`, `neutral_extends`, `complete`, `complete_prescribed`, `complete_extends` |
+| `RigidClosedHybrid` | `choose`, `choose_extends_old`, `choose_commutes`: valid/free versus invalid/candidate choice on concrete full singleton diagrams |
 | `CanonicalSocle` | ordered finite-solution choice; `Scheme.complete_append_prefix`, `preserves_compatibility`, `decode_complete`, `reflects_prefix_of_faithful`, `visible_independent` |
 | `SupportClosed` | `PairMarked`, `neutralise`, `Irreducible`, `lift_embedding`, `neutralise_omits_irreducible`, `neutralise_unique`, `neutralise_restrict` |
 
@@ -451,6 +452,55 @@ with standard axiom dependency reports and no sorryAx.
 The companion manuscript and external Big Hrushovski
 limit identification still require independent referee
 validation.
+
+## Unique closed amalgams and the full syntactic square
+
+The new companion manuscript section
+`appendix/rigid-closed-trap.tex` proves that a strong class
+with locally finite closure, finite relational closure
+expansion and **unique closed free amalgams** satisfies
+full closure-relative type-respecting amalgamation.
+A full syntactic type is called *realizable* if its
+atomic diagram occurs on named future vertices
+inside some valid closed continuation. The raw named
+set need not itself be closed. Class-valid type maps
+preserve AND reflect such realizability; the converse
+uses the generated closed hull and frontloads the source
+closed base.
+
+On realizable types, every strong amalgam is forced
+to be free. On nonrealizable syntactic types, the
+original unrestricted candidate supplies the values.
+The full theorem combines these by **exact atomic
+future supports**, including mixed atoms of any arity,
+so every invalid higher type remains coherent with
+its realizable subtypes. The same map is chosen
+before all closed continuations.
+
+`RigidClosedHybrid.lean` checks the concrete
+singleton-type version in the existing `FullType`
+and `OneTypeCompletion` APIs: choose neutral on
+realizable types, candidate otherwise, retain all
+old positive and negative atoms, and prove the
+FULL syntactic square given realizability reflection
+and uniqueness on valid images. Both latter
+mathematical inputs remain hypotheses here,
+rather than fields containing a desired conclusion.
+The complete arbitrary-arity exact-support and
+class-continuation bridge remain written proofs.
+
+For the Big Hrushovski unary functional age D'_0,
+uniqueness of closed amalgams follows from the
+concrete no-crossing theorem in
+`janhubicka/lean-big-hrushowski` PR #219 (merged).
+The required finite two-sided functional free
+amalgamation proposition in its manuscript is
+still only partly Lean-verified. Thus the class-level
+full TRAP application is explicitly conditional.
+No assertion is made for C_F multi-input closure.
+The current hybrid module and all proof dependency
+reports passed in Actions run `39863116177`,
+without nonstandard axioms or sorryAx.
 
 ## Validation and remaining work
 
