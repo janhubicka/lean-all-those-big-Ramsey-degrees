@@ -1,3 +1,4 @@
+import AllThoseBigRamsey.NonUnaryClosure
 import AllThoseBigRamsey.UnaryClosedUnion
 import AllThoseBigRamsey.MinimalBlockAge
 import AllThoseBigRamsey.MinimalClosedBlocks
@@ -63,3 +64,7 @@ import AllThoseBigRamsey.IrreducibleCover
 #print axioms AllThoseBigRamsey.UnaryClosedUnion.minimal_blocks_no_shared_new_vertex
 
 #print axioms AllThoseBigRamsey.UnaryClosedUnion.minimal_absolute_union
+
+#print axioms AllThoseBigRamsey.NonUnaryClosure.axisX_closed
+#print axioms AllThoseBigRamsey.NonUnaryClosure.axisY_closed
+#print axioms AllThoseBigRamsey.NonUnaryClosure.union_axes_not_closed
