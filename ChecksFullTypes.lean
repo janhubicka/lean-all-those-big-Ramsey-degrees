@@ -1,3 +1,4 @@
+import AllThoseBigRamsey.C0BackedgeClosed
 import AllThoseBigRamsey.C0CrossEdges
 import AllThoseBigRamsey.NonUnaryClosure
 import AllThoseBigRamsey.UnaryClosedUnion
@@ -74,3 +75,8 @@ import AllThoseBigRamsey.IrreducibleCover
 #print axioms AllThoseBigRamsey.C0CrossEdges.cross_bound
 #print axioms AllThoseBigRamsey.C0CrossEdges.zero_block_no_cross_edges
 #print axioms AllThoseBigRamsey.C0CrossEdges.singleton_delta_two
+
+#print axioms AllThoseBigRamsey.C0BackedgeClosed.no_cross_exclusive
+#print axioms AllThoseBigRamsey.C0BackedgeClosed.disjoint_closed_no_edge
+#print axioms AllThoseBigRamsey.C0BackedgeClosed.union_edges_in_one_side
+#print axioms AllThoseBigRamsey.C0BackedgeClosed.union_closed
