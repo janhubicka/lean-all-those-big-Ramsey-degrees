@@ -61,3 +61,5 @@ import AllThoseBigRamsey.IrreducibleCover
 #print axioms AllThoseBigRamsey.UnaryClosedUnion.bigUnion_closed
 #print axioms AllThoseBigRamsey.UnaryClosedUnion.minimal_blocks_intersect_in_base
 #print axioms AllThoseBigRamsey.UnaryClosedUnion.minimal_blocks_no_shared_new_vertex
+
+#print axioms AllThoseBigRamsey.UnaryClosedUnion.minimal_absolute_union
