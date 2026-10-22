@@ -11,7 +11,7 @@ one-types if realizability is reflected by the source-to-base type map.
 
 The relative realization/reflection property and the fact that neutral
 completion stays in the chosen strong class are mathematical lemmas in
-the manuscript; they are NOT asserted by an unchecked axiom here.
+the manuscript; they remain explicit mathematical hypotheses, not declarations here.
 
 This code validates the exact unrestricted/full syntactic extension
 and the one-type composition argument in the existing relational API.
