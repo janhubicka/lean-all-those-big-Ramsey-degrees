@@ -40,32 +40,33 @@ def Closed (P : Presentation α) (S : α → Prop) : Prop :=
 theorem no_cross_exclusive
     (P : Presentation α)
     {A B : α → Prop}
-    (hA : P.Closed A) (hB : P.Closed B)
+    (hA : Closed P A) (hB : Closed P B)
     {x y : α}
     (hAx : A x) (hnBx : ¬ B x)
     (hBy : B y) (hnAy : ¬ A y)
     (hxy : P.graphEdge x y) : False := by
-  rcases lt_trichotomy (P.componentIndex x) (P.componentIndex y) with
-    hlt | heq | hgt
-  · have hval : P.unaryClosure.value y x :=
-      P.backEdge y x (P.symmetric x y hxy) hlt
-    exact hnBx (hB y x hBy hval)
+  by_cases heq : P.componentIndex x = P.componentIndex y
   · have hval : P.unaryClosure.value x y :=
       P.sameComponent x y heq
     exact hnAy (hA x y hAx hval)
-  · have hval : P.unaryClosure.value x y :=
-      P.backEdge x y hxy hgt
-    exact hnAy (hA x y hAx hval)
+  · by_cases hlt : P.componentIndex x < P.componentIndex y
+    · have hval : P.unaryClosure.value y x :=
+        P.backEdge y x (P.symmetric x y hxy) hlt
+      exact hnBx (hB y x hBy hval)
+    · have hgt : P.componentIndex y < P.componentIndex x := by omega
+      have hval : P.unaryClosure.value x y :=
+        P.backEdge x y hxy hgt
+      exact hnAy (hA x y hAx hval)
 
 theorem disjoint_closed_no_edge
     (P : Presentation α)
     {A B : α → Prop}
-    (hA : P.Closed A) (hB : P.Closed B)
+    (hA : Closed P A) (hB : Closed P B)
     (hdisj : ∀ x, A x → ¬ B x)
     {x y : α} (hx : A x) (hy : B y) :
     ¬ P.graphEdge x y := by
   intro hxy
-  exact P.no_cross_exclusive hA hB hx (hdisj x hx) hy
+  exact no_cross_exclusive P hA hB hx (hdisj x hx) hy
     (fun hAy => hdisj y hAy hy) hxy
 
 /-- Every graph edge in the union of two closed substructures
@@ -74,7 +75,7 @@ graph amalgam over the intersection. -/
 theorem union_edges_in_one_side
     (P : Presentation α)
     {A B : α → Prop}
-    (hA : P.Closed A) (hB : P.Closed B)
+    (hA : Closed P A) (hB : Closed P B)
     {x y : α}
     (hx : A x ∨ B x) (hy : A y ∨ B y)
     (hxy : P.graphEdge x y) :
@@ -87,21 +88,21 @@ theorem union_edges_in_one_side
       · by_cases hyA : A y
         · exact Or.inl ⟨hxA,hyA⟩
         · exact False.elim
-            (P.no_cross_exclusive hA hB hxA hxB hyB hyA hxy)
+            (no_cross_exclusive P hA hB hxA hxB hyB hyA hxy)
   · rcases hy with hyA | hyB
     · by_cases hxA : A x
       · exact Or.inl ⟨hxA,hyA⟩
       · by_cases hyB : B y
         · exact Or.inr ⟨hxB,hyB⟩
         · exact False.elim
-            (P.no_cross_exclusive hA hB hyA hyB hxB hxA
+            (no_cross_exclusive P hA hB hyA hyB hxB hxA
               (P.symmetric x y hxy))
     · exact Or.inr ⟨hxB,hyB⟩
 
 theorem union_closed (P : Presentation α)
     {A B : α → Prop}
-    (hA : P.Closed A) (hB : P.Closed B) :
-    P.Closed (UnaryClosedUnion.Union A B) :=
+    (hA : Closed P A) (hB : Closed P B) :
+    Closed P (UnaryClosedUnion.Union A B) :=
   UnaryClosedUnion.union_closed P.unaryClosure hA hB
 
 end AllThoseBigRamsey.C0BackedgeClosed
