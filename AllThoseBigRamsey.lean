@@ -21,3 +21,5 @@ import AllThoseBigRamsey.ZeroTypePosetObstruction
 import AllThoseBigRamsey.MarkedFreeTransfer
 import AllThoseBigRamsey.TwoGraphParity
 import AllThoseBigRamsey.ClosedMatching
+import AllThoseBigRamsey.ClosedCopyPersistence
+import AllThoseBigRamsey.MinimalClosedBlocks

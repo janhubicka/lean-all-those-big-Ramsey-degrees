@@ -1,3 +1,5 @@
+import AllThoseBigRamsey.MinimalClosedBlocks
+import AllThoseBigRamsey.ClosedCopyPersistence
 import AllThoseBigRamsey.ClosedMatching
 import AllThoseBigRamsey.TwoGraphParity
 import AllThoseBigRamsey.MarkedFreeTransfer
@@ -42,3 +44,9 @@ import AllThoseBigRamsey.IrreducibleCover
 #print axioms AllThoseBigRamsey.ClosedMatching.BlockEmbedding.closure_natural
 #print axioms AllThoseBigRamsey.ClosedMatching.BlockEmbedding.toGraphEmbedding
 #print axioms AllThoseBigRamsey.ClosedMatching.append_disjoint
+
+#print axioms AllThoseBigRamsey.ClosedCopyPersistence.last_part_full_age
+#print axioms AllThoseBigRamsey.ClosedCopyPersistence.no_full_age_bad_colour
+
+#print axioms AllThoseBigRamsey.MinimalClosedBlocks.distinct_minimal_intersection
+#print axioms AllThoseBigRamsey.MinimalClosedBlocks.distinct_minimal_overlap_only_base
