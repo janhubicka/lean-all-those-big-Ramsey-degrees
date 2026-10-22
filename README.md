@@ -19,6 +19,7 @@ for mathematical scope. Lean/Std only. Run `lake build`, then
 | `IrreducibleCover` | relational `Irreducible`, actual induced embeddings, `range_in_one_side`, `Avoids`, `avoids_of_free_cover`; no size bound on the forbidden structure |
 | `TwoGraphParity` | `triangle`, `xor4`, `four_point_even`, `forced_fourth`, `rooted_insert`, `unique_mixed`, `rooted_base_atom`: kernel-checked binary parity identities |
 | `ClosedMatching` | `mate`, `Edge`, `Closed`, `closure`, `BlockEmbedding`, `closure_natural`, `appendBlock`, `append_disjoint` |
+| `ClosedCopyPersistence` | `part`, `AgeIndivisible`, `last_part_full_age`, `no_full_age_bad_colour`: checked finite partition extraction |
 | `MarkedFreeTransfer` | `GuardedAt`, `forbidden_future_is_prescribed`, `guarded_of_no_positive_off_image`: irreducible-copy obstruction for the binary free-marked TRAP construction |
 | `MetricInterpolation` | natural-number scalar clipping and `interpolation` |
 | `LatticeInterpolation` | `LatticeAdd`, `clip`, `clip_bounds`, `clip_fixed`, `clip_nonzero`, `clip_nonexpansive`, `clip_pair_bound`, `interpolation`: partially ordered scalar core |
@@ -334,6 +335,35 @@ blocks over a closed base is a disjoint union of edges. General
 Hrushovski strong/d-closed type interfaces require generated
 closure restrictions, not vertex-only one-types. They are not
 provided by this toy model.
+
+## Closed-copy persistence: checked finite-partition core
+
+The manuscript appendix extends Sauer's persistent-colouring argument
+to families of unlabelled finite closed A-copies, recording the full
+closure hull of every tuple of copies. It explicitly assumes age
+indivisibility of each realization family and closure naturality.
+To derive a bound for **ordinary** big Ramsey degrees, it additionally
+assumes every ordinary self-copy contains a strong self-copy.
+This last property is not automatic for Hrushovski predimension limits.
+
+`ClosedCopyPersistence` proves the elementary finite-partition step:
+if a family is age indivisible and each of n colour parts misses a
+configuration occurring in the whole family, the remaining part
+has the entire configuration age. The manuscript handles the
+minimum-parameter witness colouring, closed types, and the copy
+cofinality condition. The new module does NOT formalize those
+relational/closure interfaces or assert the full persistence theorem.
+Lean CI successfully checked the module at
+`e406321979c9096028760e8e789e0e72aa3a4ec9`,
+run `39732883306`, without sorryAx.
+
+A crucial counterexample prevents overapplying age indivisibility:
+even in the random graph, families of induced P3 copies can be
+2-coloured by whether the centre is earliest in a fixed enumeration,
+so neither colour realizes all finite copy configurations.
+The manuscript checks two explicit missing configurations.
+Therefore age indivisibility of arbitrary closed-block families
+cannot be inferred solely from free amalgamation.
 
 ## Validation and remaining work
 
