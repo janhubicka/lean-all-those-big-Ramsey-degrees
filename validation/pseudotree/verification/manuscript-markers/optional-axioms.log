@@ -1,0 +1,103 @@
+warning: milliken: repository has local changes:
+  /workspace/scratch/3b87be053d08/lean-all-those-big-Ramsey-degrees/validation/pseudotree/.lake/packages/milliken
+warning: ramsey-space-todorcevic: repository has local changes:
+  /workspace/scratch/3b87be053d08/lean-all-those-big-Ramsey-degrees/validation/pseudotree/.lake/packages/ramsey-space-todorcevic
+'Milliken.GeneralTree.generalProductHL_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Milliken.GeneralTree.heterogeneousHDHL_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.finiteColourSparseHL' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.finiteColourFixedBase' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.finiteColourDenseMatrices' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.finiteDemandDenseMatrices' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.finiteIndexedProductHL' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.heterogeneousFiniteDemandDenseMatrices' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AllThoseBigRamsey.Pseudotree.WordTrees.level_eq_length' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.WordTrees.binary_place_range' depends on axioms: [propext, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.WordTrees.ternary_place_range' depends on axioms: [propext, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.WordTrees.wordFiniteDemandDenseMatrices' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AllThoseBigRamsey.Pseudotree.WordTrees.binaryTernaryFiniteDemandDenseMatrices' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AllThoseBigRamsey.Pseudotree.WordTrees.rayConeDenseMatrices' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.WordTrees.wordStrongProductHL' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.WordTrees.rayConeStrongMapsHL' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.Mixed.exists_rayStable_embedding' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AllThoseBigRamsey.Pseudotree.Mixed.mixed_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.Mixed.mixed_level_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.RayMilliken.restricted_milliken' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AllThoseBigRamsey.Pseudotree.DiaryCanonization.simultaneous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.PaperDiary.represented' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.Diary.paper_axioms' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.Diary.toPaper_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.Diary.toPaper_surjective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.paperDiary_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.BinaryRay.nonempty_orderIso_rat' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AllThoseBigRamsey.Pseudotree.wordEquiv' depends on axioms: [propext]
+'AllThoseBigRamsey.Pseudotree.wordBelow_iff_toBlocks_le' depends on axioms: [propext, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.toBlocks_wordMeet' depends on axioms: [propext, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.wordBelow_prefix_incomparable_lex' depends on axioms: [propext, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.ternaryModel_two_cones' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.extend_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.finite_universal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.RayTree.isUltrahomogeneous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.RayTree.age_eq_finiteBinaryClass' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AllThoseBigRamsey.Pseudotree.ternaryModel_isFraisseLimit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.ternaryModel_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.RayMapModel.embedding' depends on axioms: [propext, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.RayMapModel.embedding_apply_word' depends on axioms: [propext, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.SparseModel.isFraisseLimit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.SparseModel.selfEmbedding_range' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AllThoseBigRamsey.Pseudotree.SparseNormalization.normalized_axioms' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AllThoseBigRamsey.Pseudotree.SparseNormalization.extraction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.SparseExtraction.sparse_copy_representation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AllThoseBigRamsey.Pseudotree.LowerRealization.sparse_chain_realization' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AllThoseBigRamsey.Pseudotree.DiaryRecovery.codes_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.DiaryRecovery.image_recovery' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.DiaryRecovery.embeddedChain_unique' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AllThoseBigRamsey.Pseudotree.Incomparables.every_oscillation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AllThoseBigRamsey.Pseudotree.Incomparables.every_pairColour' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.Incomparables.extend_incomparable_pair' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AllThoseBigRamsey.Pseudotree.Incomparables.arbitrarily_many_copy_colours' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AllThoseBigRamsey.Pseudotree.Incomparables.no_finite_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.GenericIncomparables.arbitrarily_many_copy_colours' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AllThoseBigRamsey.Pseudotree.GenericIncomparables.no_finite_bound_of_countable' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AllThoseBigRamsey.Pseudotree.RepoBridge.bound_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.RepoBridge.incomparable_degree_infinite' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AllThoseBigRamsey.Pseudotree.RepoBridge.singleton_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.chain_upper_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.chain_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AllThoseBigRamsey.Pseudotree.chain_degree_diaries' depends on axioms: [propext, Classical.choice, Quot.sound]
+Audited 3163 pseudotree declarations: only standard axioms.

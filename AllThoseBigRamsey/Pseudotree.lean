@@ -19,6 +19,7 @@ import AllThoseBigRamsey.Pseudotree.SparseShape
 import AllThoseBigRamsey.Pseudotree.SparseOrder
 import AllThoseBigRamsey.Pseudotree.SparseTree
 import AllThoseBigRamsey.Pseudotree.SparseFrontier
+import AllThoseBigRamsey.Pseudotree.WordLex
 
 /-!
 # Pseudotree audit: Lean/Std core
@@ -26,5 +27,5 @@ import AllThoseBigRamsey.Pseudotree.SparseFrontier
 This module exports the checked structural and combinatorial parts of the
 pseudotree manuscript. The optional package `validation/pseudotree` adds
 mathlib model theory and the proved Halpern–Läuchli theorem from `lean-milliken`.
-See `docs/Pseudotree-Audit.md` for the exact coverage and remaining obligations.
+See `docs/Pseudotree-Audit.md` for the exact coverage and scope.
 -/

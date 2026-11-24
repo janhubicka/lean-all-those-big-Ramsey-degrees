@@ -1,0 +1,59 @@
+{
+  "date": "2026-11-24",
+  "base_commit": "6edacea10dd2f542cb0004df3820a4a8f0915d16",
+  "lean_toolchain": "leanprover/lean4:v4.35.0-rc3",
+  "checks": [
+    {
+      "name": "core-build",
+      "command": "lake build",
+      "exit_code": 0,
+      "seconds": 1.49,
+      "log": "core-build.log",
+      "working_directory": "."
+    },
+    {
+      "name": "core-axioms",
+      "command": "lake env lean PseudotreeChecks.lean",
+      "exit_code": 0,
+      "seconds": 3.95,
+      "log": "core-axioms.log",
+      "working_directory": "."
+    },
+    {
+      "name": "optional-build",
+      "command": "lake build",
+      "exit_code": 0,
+      "seconds": 10.82,
+      "log": "optional-build.log",
+      "working_directory": "validation/pseudotree"
+    },
+    {
+      "name": "optional-axioms",
+      "command": "lake env lean Checks.lean",
+      "exit_code": 0,
+      "seconds": 3.39,
+      "log": "optional-axioms.log",
+      "working_directory": "validation/pseudotree"
+    }
+  ],
+  "namespace_audit_counts": {
+    "core": 1307,
+    "optional": 3163
+  },
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "new_word_lex_axioms": [
+    "propext",
+    "Quot.sound"
+  ],
+  "source_sha256": {
+    "AllThoseBigRamsey/Pseudotree/WordLex.lean": "acfd4a021d12424b433190c0f1511013c42ca0b319df7fdf403ef2b9dd12810b",
+    "AllThoseBigRamsey/Pseudotree.lean": "4be5932076162686cf1da322c0661381a5a61222a39c7e3a537f08036fa017cb",
+    "PseudotreeChecks.lean": "29b192c7d0d2d9171f299009bdd7fb7ec414526525e19dfea16e434166025877",
+    "validation/pseudotree/PseudotreeValidation.lean": "4e081eb2ab52840ad0872a966ce57e0d666c7dd5f90772b1967fb1db52c90132",
+    "validation/pseudotree/Checks.lean": "0af39967f587cf3620d79fcdc2677e5d9425c7746a01c8f8e7f45f78c22f4f16"
+  }
+}

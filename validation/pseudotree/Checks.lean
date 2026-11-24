@@ -36,6 +36,7 @@ import Lean
 #print axioms AllThoseBigRamsey.Pseudotree.wordEquiv
 #print axioms AllThoseBigRamsey.Pseudotree.wordBelow_iff_toBlocks_le
 #print axioms AllThoseBigRamsey.Pseudotree.toBlocks_wordMeet
+#print axioms AllThoseBigRamsey.Pseudotree.wordBelow_prefix_incomparable_lex
 #print axioms AllThoseBigRamsey.Pseudotree.ternaryModel_two_cones
 #print axioms AllThoseBigRamsey.Pseudotree.extend_finite
 #print axioms AllThoseBigRamsey.Pseudotree.finite_universal

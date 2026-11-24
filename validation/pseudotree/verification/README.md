@@ -33,3 +33,8 @@ Compiler log lines have trailing whitespace stripped; messages and recorded
 exit statuses are unchanged. This record captures local validation completed
 before publication. GitHub Actions results are recorded separately on the
 pull request and commits.
+
+The subsequent general lexicographic lemma used by the manuscript markers
+has its own follow-up build and axiom records in `manuscript-markers/`.
+That audit covers 1,307 core and 3,163 optional-package declarations; the
+records above retain their original scope and counts.

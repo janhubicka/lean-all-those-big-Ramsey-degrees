@@ -34,3 +34,4 @@ import PseudotreeValidation.SparseExtraction
 import PseudotreeValidation.DiaryRecovery
 import PseudotreeValidation.DegreeAssembly
 import PseudotreeValidation.ChainDegrees
+import AllThoseBigRamsey.Pseudotree.WordLex
