@@ -1,0 +1,28 @@
+diff --git a/Milliken/AmbientTree.lean b/Milliken/AmbientTree.lean
+index 872dcbc..f1ffac3 100644
+--- a/Milliken/AmbientTree.lean
++++ b/Milliken/AmbientTree.lean
+@@ -1,4 +1,12 @@
+-import Mathlib
++import Mathlib.Order.SuccPred.Tree
++import Mathlib.Data.Set.Finite.Basic
++import Mathlib.Data.Fintype.Pi
++import Mathlib.Data.Finset.Lattice.Fold
++import Mathlib.Topology.Baire.BaireMeasurable
++import Mathlib.Topology.Compactness.Compact
++import Mathlib.Tactic.Choose
++import Mathlib.Tactic.Push
++import Mathlib.Tactic.Positivity
+ 
+ /-!
+ # Ambient finitely branching rooted trees
+diff --git a/Milliken/GeneralTree/HeterogeneousWedgeOrder.lean b/Milliken/GeneralTree/HeterogeneousWedgeOrder.lean
+index 92fe26e..4974369 100644
+--- a/Milliken/GeneralTree/HeterogeneousWedgeOrder.lean
++++ b/Milliken/GeneralTree/HeterogeneousWedgeOrder.lean
+@@ -1,4 +1,5 @@
+ import Milliken.GeneralTree.CompressedSourceRank
++import Mathlib.Order.Sigma
+ 
+ /-!
+ # A single rooted order for a finite forest of heterogeneous trees
