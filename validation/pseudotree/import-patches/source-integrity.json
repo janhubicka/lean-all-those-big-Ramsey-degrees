@@ -1,0 +1,29 @@
+[
+  {
+    "repository": "milliken",
+    "commit": "8bd32d6d607590319e5710cc0206c76ed8079b0d",
+    "path": "Milliken/AmbientTree.lean",
+    "original_sha256": "e18d39557929ba22f6273c051d21b435a0c64ee59d3b9dfcf07593f8ff57a2d2",
+    "patched_sha256": "febe9a842d3b5f241622a9306f9de9a4d4e0ac2dd159f346d535d99fba1e653b",
+    "body_without_import_lines_sha256": "4bb023cfd088cfd99d776c8d9839ca458a0581b03105b796ac073fd7058b7b76",
+    "proof_bodies_unchanged": true
+  },
+  {
+    "repository": "milliken",
+    "commit": "8bd32d6d607590319e5710cc0206c76ed8079b0d",
+    "path": "Milliken/GeneralTree/HeterogeneousWedgeOrder.lean",
+    "original_sha256": "31c5aeba4ff74f1df3b471c222c60150e8d3b474bac76a50035592ddada7de99",
+    "patched_sha256": "ea6afe6707a6b1ff68329f6debcef9d4346e24c045dae8aafdc20e8b6b09a6e7",
+    "body_without_import_lines_sha256": "3cb5c6006def42f0f406f04573372d0b01223ba284a02397af1c58dc2a9dbb84",
+    "proof_bodies_unchanged": true
+  },
+  {
+    "repository": "ramsey-space",
+    "commit": "bb29d1f3f36ff37a35857247ca9fae581fa1fa43",
+    "path": "RamseySpace/Basic.lean",
+    "original_sha256": "85a7fc28fbaa39bb9e944c82b7ff9e324d5cc67c6a1a6ada7210a37f547261c8",
+    "patched_sha256": "99324a0467a6f792cfe168836188a2165e609318e961fca6f5c44335afc8a079",
+    "body_without_import_lines_sha256": "ea440d900c58ea2d22a01216708a0c2de653ab4632082da8646c9c109aeffdf8",
+    "proof_bodies_unchanged": true
+  }
+]
