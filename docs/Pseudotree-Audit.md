@@ -92,6 +92,13 @@ rules out a chain member properly extending its maximum. This is precisely
 what the compression proof uses. The revised manuscript explicitly cites
 both facts.
 
+The general order-reversal clause is separately proved for **all** literal
+ternary words in `Pseudotree/WordLex.lean`, without any sparse-membership
+assumption. `wordBelow_prefix_or_lex` states the prefix-or-reversal
+dichotomy, and `wordBelow_prefix_incomparable_lex` is the exact clause printed
+in the ternary-model lemma. The proof strips equal first letters and checks
+the possible first disagreement; it uses only `propext` and `Quot.sound`.
+
 ### 2. Replace the long no-isolation argument by finite avoidance
 
 For a fixed enumeration `t₀,t₁,…`, retain the definitions
@@ -128,8 +135,8 @@ infinite-degree theorem, not merely recorded as an abstract desired property.
 The proof only needs this elementary property of a nonempty family `X` of
 finite subsets of the naturals: for each `s∈X` and each bound `N`, there is a
 proper extension `t∈X` whose new elements all exceed `N`. The revised
-preliminaries mention the equivalent no-isolated-points formulation in one
-sentence and then use this property directly.
+oscillation lemma states this property directly, removing the unnecessary
+topological reformulation from the preliminaries.
 
 The oscillation lemma has a short constructive proof. Start with equal
 coordinates and alternately end-extend one coordinate beyond the union of

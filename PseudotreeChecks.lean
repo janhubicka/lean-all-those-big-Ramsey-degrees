@@ -13,6 +13,9 @@ The optional mathlib/Milliken package has its own `Checks.lean`.
 #print axioms AllThoseBigRamsey.Pseudotree.parse_print
 #print axioms AllThoseBigRamsey.Pseudotree.print_parse
 #print axioms AllThoseBigRamsey.Pseudotree.prefix_chain_regression
+#print axioms AllThoseBigRamsey.Pseudotree.wordBelow_prefix_or_lex
+#print axioms AllThoseBigRamsey.Pseudotree.wordBelow_lex_of_not_prefix
+#print axioms AllThoseBigRamsey.Pseudotree.wordBelow_prefix_incomparable_lex
 #print axioms AllThoseBigRamsey.Pseudotree.Oscillation.all_oscillations
 #print axioms AllThoseBigRamsey.Pseudotree.Oscillation.oscillation_le_one_of_subset
 #print axioms AllThoseBigRamsey.Pseudotree.residue_cover_bound
