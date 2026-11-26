@@ -3,40 +3,14 @@
 Companion to `janhubicka/All-those-big-Ramsey-degrees`, which is authoritative
 for mathematical scope. The root package uses Lean/Std only. Run `lake build`, then
 `lake env lean Checks.lean`, `lake env lean ChecksFullTypes.lean`, and
-`lake env lean PartialTypesChecks.lean`. The pseudotree audit additionally uses
-`lake env lean PseudotreeChecks.lean`.
+`lake env lean PartialTypesChecks.lean`.
 
-## Pseudotree paper audit
+## Pseudotree paper
 
-The new `Pseudotree` modules check the ternary-word order and meet, the finite-set
-oscillation lemma, ray-preserving maps and fusion, a sparse meet-closed coding
-set, and the diary event recurrence and literal tree construction. The optional
-[`validation/pseudotree`](validation/pseudotree) package reuses the proved
-Halpern–Läuchli theorem from `lean-milliken` and mathlib's functional-language
-model theory. It proves that the concrete model is the Fraïssé limit of finite
-binary meet-trees and that every finite structure with incomparable elements
-in its age has infinite big Ramsey degree, including image-invariant witness
-colourings for the copy convention.
-
-The full mixed ray-preserving product lemma and restricted finite-tree theorem
-are proved from the actual Halpern–Läuchli input. All diary shapes can be
-canonized simultaneously, the generated sparse set is identified with the full
-model, and actual sparse chains are extracted into literal diaries. Normalization
-recovers each diary from every ray-preserving realization, and every diary is
-realized in every sparse self-copy. The resulting `chain_degree` theorem proves
-the exact degree for **every nonempty finite chain**, using the repository's
-original `IsBigRamseyDegree` API. `chain_degree_diaries` states the answer as the
-cardinality of the independently defined literal diaries; the checked recurrence
-gives `1, 7, 157, 7927, 727741` for sizes one through five. The infinite-degree
-theorem for incomparable structures uses the same API through a proved
-order/meet-graph bridge. The model identification and these two degree theorems
-give the full classification for nonempty finite substructures of the binary
-pseudotree. The generic negative theorem also covers countable dense homogeneous
-meet-trees with a second branch under explicit structural hypotheses; a separate
-concrete model of the infinitely branching pseudotree is not constructed here.
-See the [mathematical audit and formal coverage](docs/Pseudotree-Audit.md),
-[mathlib reuse report](docs/Pseudotree-Mathlib.md), and
-[optional-package build instructions](validation/pseudotree/README.md).
+The complete pseudotree formalization and its verification records now live in
+[janhubicka/lean-pseudotree](https://github.com/janhubicka/lean-pseudotree).
+The shared relational degree API remains in this repository. The original
+checkpoint is preserved in Git history at `44585ec2fb84d6cd2cbc1a4ec35a378dc9f5f26c`.
 
 ## Interface index
 
