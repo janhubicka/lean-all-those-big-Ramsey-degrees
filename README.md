@@ -6,8 +6,7 @@ The source is [poset-diaries-fat-trees.tex](https://github.com/janhubicka/All-th
 ## Build and review
 
 Use Lean `v4.35.0-rc3`. Run `lake update` on a fresh checkout without a lockfile, `lake exe cache get`, then `lake build PosetDiariesFatTrees`.
-The audit file also imports the relevant external theorem modules; first build those imports, e.g.
-`lake build +SuccessorTree.ShapeFiniteRamsey +SuccessorTree.FatTree.BorelImage +RamseySpace.AbstractEllentuck +Mathlib.ModelTheory.Order`, then run `lake env lean PosetDiariesChecks.lean`.
+The root target imports the relevant external theorem modules via `PosetDiariesFatTrees.Upstream` so the same cached build compiles them. Then run `lake env lean PosetDiariesChecks.lean`.
 CI uses a single job and cached mathlib; do not push per lemma. See [validation ledger](POSET-VALIDATION.md) for individual obligations, percentages and dependency risks.
 
 ## Interface index
@@ -16,6 +15,7 @@ CI uses a single job and cached mathlib; do not push per lemma. See [validation 
 |---|---|
 | `PosetDiariesFatTrees.WordDistance` | `Letter`, `LevelWord`, `delta`, `delta_self`, `delta_triangle`, `delta_zero_iff`, `Nonexpansive` |
 | `PosetDiariesFatTrees.BoringExtension` | `extensionNat`, `extensionNat_agrees`, `extensionNat_nonexpansive`, `exists_nonexpansive_extension` |
+| `PosetDiariesFatTrees.Upstream` | targeted imports of the external finite/Borel successor and abstract Ellentuck theorems and mathlib order-language API |
 | `PosetDiariesChecks.lean` | source and upstream declaration dependency audit |
 | Planned WordOrder / Diaries | prefix, word partial order, compatibility, diary events, shape deletion |
 | Planned RootedMonoid / Synchronisation | concrete `STree`, `SMTree`, lifting and rooted synchronisation |

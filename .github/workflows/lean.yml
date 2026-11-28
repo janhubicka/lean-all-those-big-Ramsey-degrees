@@ -22,21 +22,33 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
-      - uses: leanprover/lean-action@v1
+      - name: Install Lean
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - uses: actions/cache@v4
         with:
-          auto-config: false
-          build: true
-          build-args: PosetDiariesFatTrees
-          test: false
-          lint: false
-          use-mathlib-cache: true
+          path: |
+            .lake
+            lake-manifest.json
+          key: poset-lean-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.toml') }}-${{ github.sha }}
+          restore-keys: |
+            poset-lean-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.toml') }}-
+      - name: Resolve pinned dependencies
+        run: |
+          set -euo pipefail
+          lean --version
+          if [ ! -f lake-manifest.json ]; then lake update; fi
+      - name: Get mathlib cache
+        run: lake exe cache get
+      - name: Build poset-diaries target
+        run: lake build PosetDiariesFatTrees
       - name: Reject proof placeholders
         run: |
           if grep -R -nE '^[[:space:]]*(axiom|opaque)[[:space:]]|(^|[[:space:]])(sorry|admit)([[:space:]]|$)' PosetDiariesFatTrees PosetDiariesFatTrees.lean PosetDiariesChecks.lean; then
             exit 1
           fi
-      - name: Build relevant upstream modules
-        run: lake build +SuccessorTree.ShapeFiniteRamsey +SuccessorTree.FatTree.BorelImage +RamseySpace.AbstractEllentuck +Mathlib.ModelTheory.Order
       - name: Audit local and imported statements
         run: |
           set -euo pipefail
