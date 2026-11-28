@@ -1,6 +1,21 @@
 name = "all_those_big_ramsey"
 version = "0.1.0"
-defaultTargets = ["AllThoseBigRamsey"]
+defaultTargets = ["PosetDiariesFatTrees"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "5bd58ac291422a21f412ae354c91e7d172255a2c"
+
+[[require]]
+name = "ramsey-space-todorcevic"
+git = "https://github.com/janhubicka/lean-ramsey-space-todorcevic"
+rev = "bb29d1f3f36ff37a35857247ca9fae581fa1fa43"
+
+[[require]]
+name = "successor-tree-lean"
+git = "https://github.com/janhubicka/lean-successors"
+rev = "3f5cbbb7342ba884420199737c431d57e0748df8"
 
 [[lean_lib]]
-name = "AllThoseBigRamsey"
+name = "PosetDiariesFatTrees"

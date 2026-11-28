@@ -1,30 +1,61 @@
-name: Lean
+name: Poset diaries and fat trees
 on:
   push:
-  pull_request:
+    branches: [poset-diaries-fat-trees]
+    paths:
+      - 'PosetDiariesFatTrees.lean'
+      - 'PosetDiariesFatTrees/**'
+      - 'PosetDiariesChecks.lean'
+      - 'lakefile.toml'
+      - 'lake-manifest.json'
+      - 'lean-toolchain'
+      - '.github/workflows/lean.yml'
   workflow_dispatch:
 permissions:
   contents: read
 concurrency:
-  group: lean-${{ github.ref }}
+  group: poset-diaries-${{ github.ref }}
   cancel-in-progress: true
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: leanprover/lean-action@v1
         with:
-          use-mathlib-cache: false
-      - name: Reject unchecked declarations
+          auto-config: false
+          build: true
+          build-args: PosetDiariesFatTrees
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Reject proof placeholders
         run: |
-          if grep -R -nE '(^|[[:space:]])(sorry|admit|axiom)[[:space:]]' AllThoseBigRamsey; then
+          if grep -R -nE '^[[:space:]]*(axiom|opaque)[[:space:]]|(^|[[:space:]])(sorry|admit)([[:space:]]|$)' PosetDiariesFatTrees PosetDiariesFatTrees.lean PosetDiariesChecks.lean; then
             exit 1
           fi
-      - name: Report proof dependencies
+      - name: Build relevant upstream modules
+        run: lake build +SuccessorTree.ShapeFiniteRamsey +SuccessorTree.FatTree.BorelImage +RamseySpace.AbstractEllentuck +Mathlib.ModelTheory.Order
+      - name: Audit local and imported statements
         run: |
           set -euo pipefail
-          lake env lean Checks.lean | tee axiom-report.txt
-          lake env lean PartialTypesChecks.lean | tee partial-type-axioms.txt
-          lake env lean ChecksFullTypes.lean | tee full-type-axioms.txt
-          if grep -q 'sorryAx' axiom-report.txt partial-type-axioms.txt full-type-axioms.txt; then exit 1; fi
+          lake env lean PosetDiariesChecks.lean | tee poset-diaries-axioms.txt
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          text = Path("poset-diaries-axioms.txt").read_text()
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          assert "sorryAx" not in text, text
+          for axioms in re.findall(r"depends on axioms:\s*\[([^\]]*)\]", text, re.S):
+              unexpected = {a.strip() for a in axioms.split(",") if a.strip()} - allowed
+              assert not unexpected, unexpected
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: poset-diaries-validation
+          path: |
+            poset-diaries-axioms.txt
+            lake-manifest.json
+          if-no-files-found: warn

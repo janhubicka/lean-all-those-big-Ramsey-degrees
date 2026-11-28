@@ -1,0 +1,23 @@
+import PosetDiariesFatTrees
+import SuccessorTree.ShapeFiniteRamsey
+import SuccessorTree.FatTree.BorelImage
+import RamseySpace.AbstractEllentuck
+import Mathlib.ModelTheory.Order
+
+#print axioms PosetDiariesFatTrees.coordinate_le_delta
+#print axioms PosetDiariesFatTrees.delta_self
+#print axioms PosetDiariesFatTrees.delta_le_two
+#print axioms PosetDiariesFatTrees.delta_triangle
+#print axioms PosetDiariesFatTrees.delta_zero_iff
+#print axioms PosetDiariesFatTrees.extensionNat_agrees
+#print axioms PosetDiariesFatTrees.extensionNat_nonexpansive
+#print axioms PosetDiariesFatTrees.exists_nonexpansive_extension
+#print axioms SuccessorTree.SMTree.shapePreservingRamsey
+#print axioms SuccessorTree.SMTree.FatTree.associatedMap_ofShapeMap
+#print axioms SuccessorTree.SMTree.FatTree.fatImageHomogeneous_of_BaireFibres
+#print axioms RamseySpace.abstractEllentuck_textbook
+#check RamseySpace.AbstractRamseySpace.ofPublishedAxioms
+#check FirstOrder.Language.order
+#check FirstOrder.Language.partialOrderTheory
+#check FirstOrder.Language.IsFraisseLimit
+#check FirstOrder.Language.IsUltrahomogeneous.extend_embedding
